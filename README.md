@@ -54,10 +54,6 @@ workstream.
 redefines the same tokens in two places (`prefers-color-scheme` and
 `[data-theme="dark"]`), so components never reference a raw colour.
 
-**Placeholders** — spans with `class="fill"` render on a yellow highlight. They mark
-numbers still to be filled in and are deliberately loud so they can't ship unnoticed.
-Search for `class="fill"` before publishing.
-
 ---
 
 ## Deploy
