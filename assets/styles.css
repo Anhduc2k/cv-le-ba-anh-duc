@@ -1,0 +1,508 @@
+/* ============================================================
+   CV — Le Ba Anh Duc
+   Deep-teal accent on cool-neutral paper. Neutrals carry a faint
+   teal bias so they read as chosen rather than inherited.
+
+   Theming has three states:
+     :root                                  -> light (base)
+     @media (prefers-color-scheme: dark)    -> system dark
+     :root[data-theme="dark" | "light"]     -> explicit toggle
+   Every colour is defined on :root first, so no component ever
+   depends on a value that only exists inside a media query.
+   ============================================================ */
+
+:root {
+  --paper:        #ffffff;
+  --paper-sunk:   #f5f8f8;
+  --ink:          #11171a;
+  --ink-soft:     #39454a;
+  --muted:        #6d7a7e;
+  --rule:         #dde4e4;
+  --rule-strong:  #b6c2c2;
+  --accent:       #0f5257;
+  --accent-tint:  #eaf3f2;
+  --fill-bg:      #fdf2d5;
+  --fill-line:    #c19a1e;
+
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, ui-serif, serif;
+  --font-body:    ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:       #11171a;
+    --paper-sunk:  #182023;
+    --ink:         #edf2f2;
+    --ink-soft:    #c0cbcc;
+    --muted:       #8b989b;
+    --rule:        #293336;
+    --rule-strong: #3d494c;
+    --accent:      #74c3ba;
+    --accent-tint: #172a2a;
+    --fill-bg:     #332f1a;
+    --fill-line:   #b39429;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper:       #11171a;
+  --paper-sunk:  #182023;
+  --ink:         #edf2f2;
+  --ink-soft:    #c0cbcc;
+  --muted:       #8b989b;
+  --rule:        #293336;
+  --rule-strong: #3d494c;
+  --accent:      #74c3ba;
+  --accent-tint: #172a2a;
+  --fill-bg:     #332f1a;
+  --fill-line:   #b39429;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  margin: 0;
+  padding: 24px 20px 64px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sheet {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ============================================================
+   TOOLBAR — screen only
+   ============================================================ */
+.toolbar {
+  max-width: 800px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: 9.2pt;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+.tool:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+.tool svg { width: 14px; height: 14px; flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tool { transition: none; }
+}
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 22px;
+  align-items: start;
+  padding-bottom: 16px;
+  border-bottom: 2.5px solid var(--accent);
+}
+
+.portrait {
+  width: 96px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule-strong);
+  padding: 3px;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 30pt;
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.role {
+  margin: 0;
+  font-size: 11.2pt;
+  font-weight: 650;
+  color: var(--accent);
+}
+.role .qualifier { color: var(--ink-soft); font-weight: 500; }
+.role .qualifier::before {
+  content: "/";
+  color: var(--rule-strong);
+  padding: 0 7px;
+  font-weight: 400;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px 26px;
+  font-size: 9.3pt;
+  color: var(--ink-soft);
+  margin-top: 5px;
+}
+.contact span { display: flex; gap: 8px; min-width: 0; }
+.contact .k {
+  font-family: var(--font-mono);
+  font-size: 8.2pt;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex: none;
+  width: 58px;
+  padding-top: 1px;
+}
+.contact .v { overflow-wrap: anywhere; }
+.contact a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.contact a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section { display: flex; flex-direction: column; gap: 13px; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  break-after: avoid;
+}
+.section-head h2 {
+  font-family: var(--font-body);
+  font-size: 8.8pt;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+  white-space: nowrap;
+}
+.section-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.summary {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 70ch;
+  text-wrap: pretty;
+}
+.summary strong { color: var(--ink); font-weight: 650; }
+
+/* ---------- metric strip ---------- */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-sunk);
+  break-inside: avoid;
+}
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 10px 14px;
+}
+.metric + .metric { border-left: 1px solid var(--rule); }
+.metric .fig {
+  font-family: var(--font-display);
+  font-size: 18pt;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.metric .cap {
+  font-size: 8.2pt;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* ---------- skills ---------- */
+.skills {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 8px 18px;
+  align-items: baseline;
+  margin: 0;
+}
+.skills dt {
+  font-size: 8.5pt;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.skills dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 9.1pt;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.skills dd b { color: var(--ink); font-weight: 600; }
+.skills dd .dot { color: var(--rule-strong); padding: 0 1px; }
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.job { display: flex; flex-direction: column; gap: 10px; }
+.job + .job {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.job-head {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  flex-wrap: wrap;
+  break-after: avoid;
+}
+.job-head h3 {
+  font-family: var(--font-display);
+  font-size: 14pt;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.008em;
+}
+.job-head .title { font-size: 10.3pt; color: var(--ink-soft); font-weight: 500; }
+.job-head .title::before {
+  content: "—";
+  color: var(--rule-strong);
+  padding-right: 9px;
+}
+.job-head .dates {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 9.2pt;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.job-context {
+  margin: -3px 0 2px;
+  color: var(--muted);
+  font-size: 9.7pt;
+  font-style: italic;
+  max-width: 74ch;
+  text-wrap: pretty;
+}
+
+.track { display: flex; flex-direction: column; gap: 13px; }
+
+/* one product / workstream inside a job */
+.stream {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 13px;
+  border-left: 2px solid var(--accent-tint);
+  break-inside: avoid;
+}
+.stream-label {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+  font-size: 9.9pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin-left: -13px;
+  padding-left: 13px;
+  position: relative;
+}
+.stream-label::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0.34em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+.stream-label .meta {
+  font-family: var(--font-mono);
+  font-size: 8.4pt;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: -0.005em;
+}
+
+ul.bullets {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ul.bullets li { color: var(--ink-soft); padding-left: 2px; text-wrap: pretty; }
+ul.bullets li::marker { color: var(--rule-strong); }
+ul.bullets b { color: var(--ink); font-weight: 650; }
+
+.stack {
+  margin: 3px 0 0;
+  font-family: var(--font-mono);
+  font-size: 8.6pt;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.stack .k {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: 0.95em;
+  padding-right: 3px;
+}
+
+/* Placeholder that must be replaced before publishing.
+   Deliberately loud so it cannot ship by accident. */
+.fill {
+  background: var(--fill-bg);
+  border-bottom: 1.5px dotted var(--fill-line);
+  padding: 0 3px;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--ink);
+}
+
+/* ---------- compact rows: awards, education, activities ---------- */
+.rows { display: flex; flex-direction: column; gap: 9px; }
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  flex-wrap: wrap;
+  break-inside: avoid;
+}
+.row .primary { font-weight: 650; color: var(--ink); }
+.row .secondary { color: var(--ink-soft); }
+.row .secondary::before {
+  content: "·";
+  color: var(--rule-strong);
+  padding-right: 9px;
+}
+.row .dates {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 9.2pt;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.footnote { font-size: 9pt; color: var(--muted); margin: 0; }
+
+/* ============================================================
+   NARROW SCREENS
+   ============================================================ */
+@media (max-width: 640px) {
+  .masthead { grid-template-columns: 76px 1fr; gap: 16px; }
+  .portrait { width: 76px; }
+  .name { font-size: 22pt; }
+  .contact { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric:nth-child(3) { border-left: none; }
+  .metric:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .skills { grid-template-columns: 1fr; gap: 3px 0; }
+  .skills dt { margin-top: 9px; }
+  .job-head .dates,
+  .row .dates { margin-left: 0; width: 100%; }
+}
+
+/* ============================================================
+   PRINT — A4, always the light palette
+   ============================================================ */
+@page { size: A4; margin: 11mm 13mm; }
+
+@media print {
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --paper: #ffffff;
+    --paper-sunk: #f5f8f8;
+    --ink: #11171a;
+    --ink-soft: #39454a;
+    --muted: #6d7a7e;
+    --rule: #dde4e4;
+    --rule-strong: #b6c2c2;
+    --accent: #0f5257;
+    --accent-tint: #eaf3f2;
+    --fill-bg: #fdf2d5;
+    --fill-line: #c19a1e;
+  }
+
+  body {
+    padding: 0;
+    font-size: 9.5pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .toolbar { display: none; }
+  .sheet { max-width: none; gap: 16px; }
+  .name { font-size: 25pt; }
+  .metric .fig { font-size: 16pt; }
+  .contact a { border-bottom: none; }
+  section { break-inside: auto; }
+}
