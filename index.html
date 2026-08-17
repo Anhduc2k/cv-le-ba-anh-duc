@@ -80,7 +80,7 @@
 
     <section>
       <div class="section-head">
-        <h2>Profile</h2>
+        <h2>Summary</h2>
       </div>
       <!-- Two columns so the lede fills the sheet at a readable measure
            (~54 characters) instead of stopping short of the right edge. -->
@@ -102,8 +102,13 @@
 
     <section>
       <div class="section-head">
-        <h2>Technical Skills</h2>
+        <h2>Experience</h2>
       </div>
+
+      <!-- 2.1 — what I can do, split into stack and ownership -->
+      <h3 class="sub-head">Professional Skills</h3>
+
+      <p class="sub-label">Technical</p>
       <dl class="skills">
         <dt>Core</dt>
         <dd><b>TypeScript</b> (strict) <span class="dot">·</span> JavaScript ES2022+ <span class="dot">·</span> HTML5
@@ -143,8 +148,8 @@
           Analytics <span class="dot">·</span> Clevertap <span class="dot">·</span> SEO &amp; Core Web Vitals</dd>
 
         <dt>Tooling</dt>
-        <dd>Git <span class="dot">·</span> CI/CD <span class="dot">·</span> Docker <span class="dot">·</span> ESLint
-          <span class="dot">·</span> Turbopack / Vite / Webpack <span class="dot">·</span> Jira <span
+        <dd>Git <span class="dot">·</span> CI/CD <span class="dot">·</span> AI-assisted dev <span class="dot">·</span>
+          ESLint <span class="dot">·</span> Turbopack / Vite / Webpack <span class="dot">·</span> Jira <span
             class="dot">·</span> Figma
         </dd>
 
@@ -152,69 +157,156 @@
         <dd>English (intermediate) — technical documentation, written
           reports, async collaboration</dd>
       </dl>
-    </section>
 
-    <section>
-      <div class="section-head">
-        <h2>Experience</h2>
-      </div>
+      <p class="sub-label">Main Responsibilities</p>
+      <!-- Deliberately one line each: the detail lives in 2.2, and
+           repeating it here cost a whole page. -->
+      <ul class="bullets responsibilities">
+        <li>Own core editing surfaces of a production <b>drag-and-drop canvas engine</b></li>
+        <li>Build and maintain <b>product surfaces</b> on a large Next.js / React platform</li>
+        <li>Define <b>shared frontend contracts</b> adopted platform-wide — data tables, i18n, theming</li>
+        <li>Integrate <b>third-party platforms</b> — billing, auth, e-commerce, analytics</li>
+        <li>Own <b>performance, Core Web Vitals and technical SEO</b></li>
+        <li>Author <b>engineering conventions</b> and AI-assisted development guidelines; mentor teammates</li>
+        <li>Run Scrum ceremonies as <b>Scrum Master</b></li>
+      </ul>
+
+      <!-- 2.2 — the projects themselves -->
+      <h3 class="sub-head">Key Projects &amp; Responsibilities</h3>
 
       <article class="job">
         <div class="job-head">
           <h3>LadiPage</h3>
-          <span class="title">Frontend Developer</span>
+          <span class="title">Frontend Developer · Scrum Master</span>
           <span class="dates">07/2024 — Present</span>
         </div>
         <p class="job-context">
-          Vietnam's leading no-code landing-page platform. I work across three codebases in parallel: the legacy builder
-          engine, the v5 production dashboard, and the v6 rewrite.
+          Vietnam's leading no-code landing-page platform. Two sides to the product: the <b>builder</b> customers author
+          in, and the <b>dashboard</b> they run their business from. I work on both, across the production engine, the
+          live dashboard and the ground-up rewrite.
         </p>
 
         <div class="track">
 
           <div class="stream">
-            <div class="stream-label">Drag-and-drop builder engine</div>
+            <div class="stream-label">Builder — canvas editing <span class="meta">two engines</span></div>
+            <p class="stream-intro">The drag-and-drop editor customers build landing pages and slide decks in. I own
+              core editing surfaces on the production engine and built the canvas for the new one.</p>
             <ul class="bullets">
-              <li>Own core editing surfaces of the canvas engine — <b>component rendering, positioning, snap guides and
-                  alignment, multi-select, undo/redo history and live preview</b> — keeping the editor responsive on
-                large, element-heavy pages.</li>
-              <li>Designed a <b>modular component system</b> (buttons, forms, sliders, sections, popups) driven by a
-                configurable properties panel, so new element types ship without touching the canvas core.</li>
-              <li>Added <b>multi-language support</b> to the builder and built a colour-token and palette system that
-                lets users restyle an entire page in one click.</li>
+              <li><b>Production engine</b> (JavaScript ES6, Canvas &amp; DOM, Grunt, jQuery-era interop) — own
+                <b>component rendering, positioning, snap guides and alignment, multi-select, undo/redo history and live
+                  preview</b>, keeping the editor responsive on large, element-heavy pages. Built a <b>modular component
+                  system</b> (buttons, forms, sliders, sections, popups) driven by a configurable properties panel, so
+                new element types ship without touching the canvas core, plus multi-language support and a colour-token
+                palette that restyles a whole page in one click.
+              </li>
+              <li><b>New React builder</b> — <b>snap-and-align</b> computed against neighbouring elements' edges and
+                centres within a 5&nbsp;px threshold, returning the guide lines to draw; rulers, minimap, layers panel
+                and alignment tools over the same geometry.</li>
+              <li><b>Undo/redo as past / present / future</b>, where every entry carries an action label and timestamp —
+                so the history panel reads as a list of what changed rather than an opaque stack of states.</li>
+              <li><b>Presenter mode over <code>BroadcastChannel</code></b> with a typed message protocol
+                (<code>INIT</code>, <code>SLIDE_CHANGE</code>, <code>TIMER_SYNC</code>, <code>EXIT</code>) keeping the
+                presenter window and audience window on the same slide, reveal step and timer.</li>
+              <li>Right-hand inspector built on <b>its own flat primitive set</b> so every element panel stays
+                consistent; every new per-element field is <b>optional on the shared element type</b>, so pages authored
+                by earlier versions keep loading as the schema grows.</li>
               <li>Deliver <b>custom-coded landing pages for enterprise clients</b> on top of the builder framework,
                 working within its extension model rather than forking it.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> JavaScript (ES6, modular architecture) · Canvas &amp; DOM
-              rendering · Grunt · jQuery-era interop</p>
+            <p class="stack"><span class="k">Stack</span> JavaScript (ES6) · React 19 · TypeScript · @dnd-kit · Canvas
+              &amp; DOM geometry · BroadcastChannel · Tiptap · CodeMirror · Grunt</p>
           </div>
 
           <div class="stream">
-            <div class="stream-label">LadiPage App Dashboard — platform rewrite <span class="meta">current focus</span>
-            </div>
+            <div class="stream-label">Dashboard — the platform app <span class="meta">current focus</span></div>
+            <p class="stream-intro">Ground-up rebuild of the customer dashboard, replacing an ageing Angular / Nx
+              application: landing pages, e-commerce, CRM and sales pipeline, tasks, marketing automation, reports,
+              blog and workspace settings.</p>
             <ul class="bullets">
-              <li>Core contributor on the ground-up rebuild of the customer dashboard in <b>Next.js 16 App Router, React
-                  19, TypeScript strict and Tailwind v4</b>, replacing an ageing Angular / Nx application.</li>
-              <li>Built product surfaces across the platform: landing-page management, e-commerce (orders, products,
-                storefront), CRM &amp; customers, marketing automation, reports &amp; analytics, blog, reviews,
-                workspace settings and app store.</li>
-              <li>Established the shared data-table contract used platform-wide — <b>server-side pagination, debounced
-                  search, sorting, filters, URL-synced state and abortable in-flight requests</b> — replacing
-                client-side filtering that silently broke past page one.</li>
-              <li>Set up the <b>multi-locale i18n architecture</b> and message catalogue, including an automated
-                translation pipeline and a CI check that fails the build on missing or malformed ICU keys.</li>
-              <li>Integrated <b>Paddle</b> global billing: plan purchase, mid-cycle add-on editing with proration,
-                scheduled downgrades and usage-guard error handling — a flow where an incorrect payload charges real
-                customers.</li>
+              <li><b>App structure</b> — Next.js 16 App Router, React 19, TypeScript strict, Tailwind v4. Organised as
+                <b>three parallel route-group shells</b> (dashboard, auth, full-screen builder) so builder and presenter
+                views escape the dashboard chrome without duplicating routes; state is lifted to context only where it
+                spans routes, and components are split by domain over a shared primitive layer.
+              </li>
+              <li><b>API layer</b> — one typed client fanning out to <b>six separate backend products</b>, split into
+                per-domain modules. Each product requires a different identity header set (<code>store-id</code>,
+                <code>team-id</code>, <code>Owner-Id</code>) and rejects the others at CORS preflight, and each keys off
+                its <b>own store id in a separate ID space</b> — the wrong one returns an empty list rather than an
+                error, so ids resolve once at bootstrap and are cached.
+              </li>
+              <li><b>Data tables</b>, the contract every list screen follows — server-side pagination, search debounced
+                at 300&nbsp;ms, sorting, filters, <b>URL-synced state</b> so reload and browser-back survive, and
+                <b><code>AbortController</code> signals</b> so rapid filter changes cannot race. Replaced client-side
+                filtering that silently broke past page one.
+              </li>
+              <li><b>CRM sales pipeline</b> — Kanban for deals and tasks on @dnd-kit with list, to-do and forecast views
+                over the same data. Card mutations are <b>optimistic with snapshot rollback</b>: the previous values are
+                captured, the UI patches instantly, and the snapshot is re-applied if the write fails. Board totals come
+                from <b>server-computed summaries, never summed from the loaded page</b> — the shortcut that silently
+                reports wrong numbers once a pipeline exceeds one page.</li>
+              <li><b>Lead routing and segmentation</b> — auto-assign rules as an ordered list reorderable by drag
+                (priority re-indexed on drop), each holding a nested condition group, with <b>ratio-weighted
+                  distribution across staff</b> rather than plain round-robin. The segment builder nests condition
+                groups
+                under and/or glue, deriving both the available operators and the value-input type from the field:
+                built-in fields route by field reference, custom fields by declared data type.</li>
+              <li><b>Custom report dashboards</b> — assembled from a library of saved reports, widgets drag-reorderable
+                and width-togglable on a responsive grid. A <b>parameter-mapping layer</b> lets one dashboard control
+                drive charts built on entirely different report schemas.</li>
+              <li><b>HTML → LadiPage converter</b> — ingests an uploaded file or archive and turns a third-party page
+                into an editable document. Conversion runs long server-side, so the client <b>polls with staged
+                  backoff</b> (tight for the first half-minute where most jobs finish, then slower) instead of holding a
+                request open until the browser drops it; the size cap is enforced client-side too, so oversized files
+                fail before the upload rather than after. The post-convert <b>risk report</b> uses the backend's own
+                analysis, and <b>derives the likely-diverging parts from the converted output</b> when the backend runs
+                in a mode that produces none.</li>
+              <li><b>Embedded micro-frontend</b> — a separate flow-editor application mounted in an iframe with
+                <b>origin-validated <code>postMessage</code> both ways</b>, so refreshed credentials can be pushed in
+                after a token renewal, and the frame stays mounted across navigation so switching pages never reloads
+                the editor mid-edit.
+              </li>
+              <li><b>i18n</b> on next-intl — two locales, cookie-resolved with no URL prefix, and a CI check that fails
+                the build when a key exists in one catalogue but not the other, or when ICU markup is malformed.</li>
+              <li><b>Paddle</b> global billing: plan purchase, mid-cycle add-on editing with proration, scheduled
+                downgrades and usage-guard error handling — a flow where an incorrect payload charges real customers.
+              </li>
               <li>Author of the repository's engineering conventions and AI-assisted development guidelines now followed
                 across the frontend team.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> Next.js 16 · React 19 · TypeScript · Tailwind v4 · Radix UI ·
-              next-intl · Tiptap · CodeMirror · dnd-kit · Recharts · Firebase · Socket.IO · Docker</p>
+            <p class="stack"><span class="k">Stack</span> Next.js 16 · React 19 · TypeScript (strict) · Tailwind v4 ·
+              Radix UI · next-intl · @dnd-kit · Recharts · Tiptap · CodeMirror · Socket.IO · Firebase · Paddle ·
+              Docker</p>
           </div>
 
           <div class="stream">
-            <div class="stream-label">AI product features <span class="meta">Google Gemini</span></div>
+            <div class="stream-label">Identity &amp; SSO <span class="meta">LadiUID</span></div>
+            <ul class="bullets">
+              <li>Hold the <b>JWT in a cookie rather than localStorage</b>, deliberately: the edge middleware, the React
+                app and the <b>embedded legacy AngularJS builder</b> then all read one value, so the legacy builder
+                needs
+                no token bridge and signing out in one tab propagates everywhere. Scoped <code>SameSite=Lax</code>,
+                <code>Secure</code> over HTTPS.
+              </li>
+              <li>Built the full identity surface against the platform's <b>LadiUID</b> service: sign-in, signup with
+                OTP
+                verification, password reset and change, session activity history, sign-out-all-devices.</li>
+              <li><b>OAuth2 with Google and Facebook</b> through a popup bridge — a static relay page forwards the
+                provider's <code>?code=</code> to the opener via <code>postMessage</code>. The middleware whitelists
+                that
+                path, since the ordinary "authenticated user on an auth route → redirect" guard would otherwise hijack
+                the callback and break every integration connect.</li>
+              <li><b>Two-factor authentication</b> — TOTP enrolment, enable / disable, and a trusted-device list with
+                per-device revocation.</li>
+              <li><b>Token-renewal interceptor</b> — a 401 / 498 / 503 triggers one silent renewal and a single retry,
+                with an opt-out flag so the auth endpoints themselves cannot recurse through it.</li>
+            </ul>
+            <p class="stack"><span class="k">Stack</span> LadiUID SSO · OAuth2 (Google, Facebook) · JWT in cookie ·
+              TOTP 2FA · Next.js edge middleware · cross-tab session sync</p>
+          </div>
+
+          <div class="stream">
+            <div class="stream-label">AI product features <span class="meta">Gemini · OpenAI</span></div>
             <ul class="bullets">
               <li>Shipped production LLM features: <b>AI landing-page generation</b> from a single prompt, <b>AI image
                   generation</b>, image analysis, an <b>AI copywriting assistant</b> and CRO recommendations — replacing
@@ -222,9 +314,20 @@
               <li>Designed the generation pipeline that maps model output onto the builder's <b>element tree</b> rather
                 than emitting static HTML, so every AI-generated section stays fully editable on the canvas — the
                 difference between a demo and something customers actually ship.</li>
-              <li>Implemented these as server-side route handlers so API keys never reach the client, with graceful
-                degradation when the AI service is unavailable.</li>
+              <li>Implemented these as <b>server-only route handlers</b> so provider keys never reach the browser; each
+                returns a typed error when a key is absent rather than failing opaquely at runtime.</li>
+              <li>Made copywriting <b>provider-swappable behind one route contract</b> — a single environment flag
+                switches the same endpoint between <b>Gemini</b> and <b>OpenAI</b>, so the product is not locked to one
+                vendor's pricing or availability.</li>
+              <li>Tuned <b>sampling per task rather than globally</b>: high temperature for copywriting, where variety
+                is
+                the point, and low for image analysis, where it is not. Image generation is <b>two-stage</b> — a text
+                model first expands the user's short prompt into a fuller scene description, then the image model
+                renders
+                it.</li>
             </ul>
+            <p class="stack"><span class="k">Stack</span> Gemini (text · image · vision) · OpenAI · Next.js route
+              handlers · server-side key isolation · prompt design</p>
           </div>
 
         </div>
@@ -237,8 +340,8 @@
           <span class="dates">09/2021 — 06/2024</span>
         </div>
         <p class="job-context">
-          EdTech group behind Monkey. Shipped products across e-learning, CRM and AI-assisted learning in Agile
-          teams.
+          EdTech group behind Monkey. Shipped products across e-learning, CRM and AI-assisted learning in
+          <b>Agile Scrum</b> teams — sprint planning, refinement and retrospectives, tracked in Jira.
         </p>
 
         <div class="track">
@@ -254,6 +357,7 @@
             </ul>
             <p class="stack"><span class="k">Stack</span> JavaScript · Blade / PHP · jQuery · Google Analytics ·
               Clevertap</p>
+            <p class="stack"><span class="k">Lang</span> JavaScript · PHP (Blade) · HTML5 · CSS3</p>
           </div>
 
           <div class="stream">
@@ -284,7 +388,8 @@
               <li>Built an internal <b>CRM for course, schedule and classroom management</b>, a parent-facing portal for
                 tracking learning progress, and an interactive assignment / game module for students.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> Next.js 13 · Angular (CRM) · React Hook Form + Yup · Axios</p>
+            <p class="stack"><span class="k">Stack</span> Next.js 13 · Angular (CRM) · React Hook Form + Yup · Axios ·
+              Bootstrap 4</p>
           </div>
 
           <div class="stream">
@@ -296,9 +401,12 @@
                 production drag-and-drop editor, and the foundation for the builder work I do today.</li>
               <li>Scoped and shipped exam and homework flows for students alongside training and lecture tools for
                 teachers, and owned <b>performance and technical SEO</b> for the public-facing library.</li>
+              <li>Worked in a <b>micro-frontend architecture</b>, with <b>SSO</b> across the platform's applications so
+                students and teachers move between them without re-authenticating.</li>
             </ul>
             <p class="stack"><span class="k">Stack</span> React · Fabric.js · Redux · React Router · Styled-components ·
-              React Hook Form</p>
+              React Hook Form · micro-frontends · SSO / JWT</p>
+            <p class="stack"><span class="k">Lang</span> JavaScript · HTML5 · CSS3</p>
           </div>
 
         </div>
@@ -307,34 +415,20 @@
 
     <section>
       <div class="section-head">
-        <h2>Awards &amp; Education</h2>
+        <h2>Education &amp; Awards</h2>
       </div>
       <div class="rows">
-        <div class="row">
-          <span class="primary">Employee of the Year — Technical Department</span>
-          <span class="secondary">Early Start</span>
-          <span class="dates">2023</span>
-        </div>
         <div class="row">
           <span class="primary">Electric Power University</span>
           <span class="secondary">B.Eng, Information Technology — Software Technology · GPA 3.3 / 4.0</span>
           <span class="dates">2018 — 2023</span>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head">
-        <h2>Beyond Work</h2>
-      </div>
-      <div class="rows">
         <div class="row">
-          <span class="primary">Monkey FC &amp; Landing FC — Captain</span>
-          <span class="secondary">Organise squads, fixtures and friendlies for colleagues</span>
-          <span class="dates">2022 — Present</span>
+          <span class="primary">Employee of the Year — Technical Department</span>
+          <span class="secondary">Early Start</span>
+          <span class="dates">2023</span>
         </div>
       </div>
-      <p class="footnote">Football · running · badminton</p>
     </section>
 
   </main>

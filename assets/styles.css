@@ -274,6 +274,42 @@ section {
   white-space: nowrap;
 }
 
+/* Two heading levels below <h2>: .sub-head names a numbered part of a
+   section (2.1, 2.2), .sub-label names a block inside one. Both stay
+   quieter than the accent-coloured section rule above them. */
+.sub-head {
+  font-family: var(--font-body);
+  font-size: 10.4pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+  break-after: avoid;
+}
+
+.sub-label {
+  font-family: var(--font-mono);
+  font-size: 8.2pt;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--rule);
+  break-after: avoid;
+}
+
+/* One-line items, so two columns read fine and save a page.
+   Needs ul.bullets.responsibilities to outrank ul.bullets, which
+   sets display:flex and would otherwise win on specificity. */
+ul.bullets.responsibilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 32px;
+  break-inside: auto;
+}
+
 .section-head::after {
   content: "";
   flex: 1;
@@ -476,6 +512,25 @@ ul.bullets b {
   font-weight: 650;
 }
 
+/* One line naming what a stream actually is, before the how-bullets. */
+.stream-intro {
+  margin: 0 0 6px;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* Identifiers quoted from the codebase — set in the mono face at a size
+   that matches surrounding text rather than shrinking below it. */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--ink);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  padding: 0 3px;
+  white-space: nowrap;
+}
+
 .stack {
   margin: 3px 0 0;
   font-family: var(--font-mono);
@@ -572,6 +627,10 @@ ul.bullets b {
   .summary p+p {
     border-left: none;
     padding-left: 0;
+  }
+
+  ul.bullets.responsibilities {
+    grid-template-columns: 1fr;
   }
 
   .skills {
