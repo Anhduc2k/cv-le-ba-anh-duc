@@ -189,94 +189,104 @@
         <div class="track">
 
           <div class="stream">
-            <div class="stream-label">Builder — canvas editing <span class="meta">two engines</span></div>
-            <p class="stream-intro">The drag-and-drop editor customers build landing pages and slide decks in. I own
-              core editing surfaces on the production engine and built the canvas for the new one.</p>
+            <div class="stream-label">Builder — the editor customers author in</div>
+            <p class="stream-intro">Drag-and-drop editor for landing pages, popups and slide decks, plus the checkout
+              customers actually sell through. I own core editing surfaces on the production engine and built the canvas
+              for its React successor.</p>
             <ul class="bullets">
-              <li><b>Production engine</b> (JavaScript ES6, Canvas &amp; DOM, Grunt, jQuery-era interop) — own
-                <b>component rendering, positioning, snap guides and alignment, multi-select, undo/redo history and live
-                  preview</b>, keeping the editor responsive on large, element-heavy pages. Built a <b>modular component
-                  system</b> (buttons, forms, sliders, sections, popups) driven by a configurable properties panel, so
-                new element types ship without touching the canvas core, plus multi-language support and a colour-token
-                palette that restyles a whole page in one click.
-              </li>
-              <li><b>New React builder</b> — <b>snap-and-align</b> computed against neighbouring elements' edges and
-                centres within a 5&nbsp;px threshold, returning the guide lines to draw; rulers, minimap, layers panel
-                and alignment tools over the same geometry.</li>
-              <li><b>Undo/redo as past / present / future</b>, where every entry carries an action label and timestamp —
-                so the history panel reads as a list of what changed rather than an opaque stack of states.</li>
-              <li><b>Presenter mode over <code>BroadcastChannel</code></b> with a typed message protocol
-                (<code>INIT</code>, <code>SLIDE_CHANGE</code>, <code>TIMER_SYNC</code>, <code>EXIT</code>) keeping the
-                presenter window and audience window on the same slide, reveal step and timer.</li>
-              <li>Right-hand inspector built on <b>its own flat primitive set</b> so every element panel stays
-                consistent; every new per-element field is <b>optional on the shared element type</b>, so pages authored
-                by earlier versions keep loading as the schema grows.</li>
-              <li>Deliver <b>custom-coded landing pages for enterprise clients</b> on top of the builder framework,
-                working within its extension model rather than forking it.</li>
+              <li><b>~40 element types</b> as self-contained plugins — headline, paragraph, list, button and button
+                group, image, shape, line, video, gallery, carousel, menu, tabs, accordion, table, countdown, survey,
+                banner, popup, section, frame and <b>group</b> (nested selection, moved / resized / snapped as one).
+                Each plugin declares its own property schema, so a new element type ships without touching the canvas
+                core.</li>
+              <li><b>Form &amp; checkout</b> — form builder with typed fields, required-field validation, reCAPTCHA
+                (standard and enterprise), Vietnamese province / district / ward address pickers, cart, product and
+                quantity selectors, coupons and <b>order bumps</b>. Checkout wires up to <b>COD, bank transfer, VNPAY,
+                  MoMo, ZaloPay, ShopeePay, NAPAS, Stripe and PayPal</b>.</li>
+              <li><b>Custom code</b> — per-element and per-page HTML / CSS / JavaScript blocks edited in an embedded
+                code editor, with SASS compiled in the browser, so power users extend a page without leaving the
+                builder.</li>
+              <li><b>Engine architecture</b> — a prototype-based <code>LadiPageV2</code> class of roughly 460 methods
+                partitioned across modules by concern: builder operations, getters, setters, mouse and keyboard events,
+                HTML generation, snapping, rollback, attribute mapping, validation and responsive adaptation.</li>
+              <li><b>Undo/redo as diffed transactions</b>, not state snapshots — opening a transaction captures the
+                affected elements and their children, closing it diffs before against after and records only what
+                actually changed as delete / update-old / update-new actions. History is capped and evicts oldest, and
+                acting after an undo truncates the redo branch.</li>
+              <li><b>Snapping</b> — grid snap plus element snap against neighbours' edges and centres, with live guide
+                lines, group-level snapping and snap-on-resize.</li>
+              <li>Built the <b>React canvas</b> for the successor builder: the same snap-and-align model at a 5&nbsp;px
+                threshold, an undo history where every entry carries an action label and timestamp so the panel reads as
+                a list of changes, and <b>presenter mode over <code>BroadcastChannel</code></b> keeping the presenter and
+                audience windows on the same slide, reveal step and timer.</li>
+              <li>Deliver <b>custom-coded landing pages for enterprise clients</b> on the builder's extension model
+                rather than forking it.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> JavaScript (ES6) · React 19 · TypeScript · @dnd-kit · Canvas
-              &amp; DOM geometry · BroadcastChannel · Tiptap · CodeMirror · Grunt</p>
+            <p class="stack"><span class="k">Legacy</span> JavaScript ES6 (prototype OOP) · AngularJS 1.8 + ui-router ·
+              jQuery &amp; jQuery-UI sortable / nestedSortable · TinyMCE · Ace editor · sass.js · Mousetrap · oclazyload
+              · Highcharts · Socket.IO · Grunt + Bower</p>
+            <p class="stack"><span class="k">New</span> React 19 · TypeScript · @dnd-kit · Canvas &amp; DOM geometry ·
+              BroadcastChannel · Tiptap · CodeMirror</p>
           </div>
 
           <div class="stream">
-            <div class="stream-label">Dashboard — the platform app <span class="meta">current focus</span></div>
-            <p class="stream-intro">Ground-up rebuild of the customer dashboard, replacing an ageing Angular / Nx
-              application: landing pages, e-commerce, CRM and sales pipeline, tasks, marketing automation, reports,
-              blog and workspace settings.</p>
+            <div class="stream-label">Dashboard — where customers run the business <span class="meta">current
+                focus</span></div>
+            <p class="stream-intro">Landing pages, e-commerce, CRM and sales pipeline, tasks, marketing automation,
+              reports, blog and workspace settings. I work on the live React/Redux dashboard and lead frontend on the
+              Next.js rewrite replacing it.</p>
             <ul class="bullets">
-              <li><b>App structure</b> — Next.js 16 App Router, React 19, TypeScript strict, Tailwind v4. Organised as
-                <b>three parallel route-group shells</b> (dashboard, auth, full-screen builder) so builder and presenter
-                views escape the dashboard chrome without duplicating routes; state is lifted to context only where it
-                spans routes, and components are split by domain over a shared primitive layer.
-              </li>
-              <li><b>API layer</b> — one typed client fanning out to <b>six separate backend products</b>, split into
-                per-domain modules. Each product requires a different identity header set (<code>store-id</code>,
+              <li><b>Production dashboard</b> — React 18 in an <b>Nx monorepo</b>, with <b>Redux + redux-thunk</b> for
+                global state, React Router 5, and <b>REST over axios</b>; i18next for translations and Socket.IO for
+                live updates.</li>
+              <li><b>Rewrite</b> — Next.js 16 App Router, React 19, TypeScript strict, Tailwind v4. Deliberately
+                <b>dropped Redux</b>: server state lives in the data layer, cross-route state in a small set of React
+                contexts, and everything else stays local to the feature — which removed the boilerplate layer without
+                losing shared state.</li>
+              <li><b>App structure</b> — <b>three parallel route-group shells</b> (dashboard, auth, full-screen builder)
+                so builder and presenter views escape the dashboard chrome without duplicating routes; components split
+                by domain over a shared primitive layer.</li>
+              <li><b>REST API layer</b> — one typed client fanning out to <b>six separate backend products</b>, split
+                into per-domain modules. Each product requires a different identity header set (<code>store-id</code>,
                 <code>team-id</code>, <code>Owner-Id</code>) and rejects the others at CORS preflight, and each keys off
                 its <b>own store id in a separate ID space</b> — the wrong one returns an empty list rather than an
-                error, so ids resolve once at bootstrap and are cached.
-              </li>
+                error, so ids resolve once at bootstrap and are cached.</li>
               <li><b>Data tables</b>, the contract every list screen follows — server-side pagination, search debounced
                 at 300&nbsp;ms, sorting, filters, <b>URL-synced state</b> so reload and browser-back survive, and
                 <b><code>AbortController</code> signals</b> so rapid filter changes cannot race. Replaced client-side
-                filtering that silently broke past page one.
-              </li>
-              <li><b>CRM sales pipeline</b> — Kanban for deals and tasks on @dnd-kit with list, to-do and forecast views
-                over the same data. Card mutations are <b>optimistic with snapshot rollback</b>: the previous values are
-                captured, the UI patches instantly, and the snapshot is re-applied if the write fails. Board totals come
+                filtering that silently broke past page one.</li>
+              <li><b>CRM sales pipeline</b> — Kanban for deals and tasks on @dnd-kit, with list, to-do and forecast
+                views over the same data. Card mutations are <b>optimistic with snapshot rollback</b>. Board totals come
                 from <b>server-computed summaries, never summed from the loaded page</b> — the shortcut that silently
                 reports wrong numbers once a pipeline exceeds one page.</li>
-              <li><b>Lead routing and segmentation</b> — auto-assign rules as an ordered list reorderable by drag
-                (priority re-indexed on drop), each holding a nested condition group, with <b>ratio-weighted
-                  distribution across staff</b> rather than plain round-robin. The segment builder nests condition
-                groups
-                under and/or glue, deriving both the available operators and the value-input type from the field:
-                built-in fields route by field reference, custom fields by declared data type.</li>
-              <li><b>Custom report dashboards</b> — assembled from a library of saved reports, widgets drag-reorderable
-                and width-togglable on a responsive grid. A <b>parameter-mapping layer</b> lets one dashboard control
-                drive charts built on entirely different report schemas.</li>
-              <li><b>HTML → LadiPage converter</b> — ingests an uploaded file or archive and turns a third-party page
-                into an editable document. Conversion runs long server-side, so the client <b>polls with staged
-                  backoff</b> (tight for the first half-minute where most jobs finish, then slower) instead of holding a
-                request open until the browser drops it; the size cap is enforced client-side too, so oversized files
-                fail before the upload rather than after. The post-convert <b>risk report</b> uses the backend's own
-                analysis, and <b>derives the likely-diverging parts from the converted output</b> when the backend runs
-                in a mode that produces none.</li>
-              <li><b>Embedded micro-frontend</b> — a separate flow-editor application mounted in an iframe with
+              <li><b>Lead routing and segmentation</b> — auto-assign rules as a drag-reorderable priority list, each
+                holding a nested condition group, with <b>ratio-weighted distribution across staff</b> rather than plain
+                round-robin. The segment builder derives both the available operators and the value-input type from the
+                field: built-in fields by field reference, custom fields by declared data type.</li>
+              <li><b>Custom report dashboards</b> — widgets assembled from saved reports, drag-reorderable and
+                width-togglable, with a <b>parameter-mapping layer</b> so one dashboard control drives charts built on
+                entirely different report schemas.</li>
+              <li><b>HTML → LadiPage converter</b> — turns an uploaded third-party page into an editable document.
+                Conversion is long-running server-side, so the client <b>polls with staged backoff</b> instead of holding
+                a request open until the browser drops it, the size cap is enforced client-side too, and the
+                post-convert <b>risk report</b> falls back to deriving likely-diverging parts from the converted output
+                when the backend produces no analysis.</li>
+              <li><b>Embedded micro-frontend</b> — a separate flow-editor application in an iframe with
                 <b>origin-validated <code>postMessage</code> both ways</b>, so refreshed credentials can be pushed in
                 after a token renewal, and the frame stays mounted across navigation so switching pages never reloads
-                the editor mid-edit.
-              </li>
+                the editor mid-edit.</li>
               <li><b>i18n</b> on next-intl — two locales, cookie-resolved with no URL prefix, and a CI check that fails
-                the build when a key exists in one catalogue but not the other, or when ICU markup is malformed.</li>
+                the build when a key exists in one catalogue but not the other.</li>
               <li><b>Paddle</b> global billing: plan purchase, mid-cycle add-on editing with proration, scheduled
-                downgrades and usage-guard error handling — a flow where an incorrect payload charges real customers.
-              </li>
+                downgrades and usage-guard error handling — a flow where an incorrect payload charges real customers.</li>
               <li>Author of the repository's engineering conventions and AI-assisted development guidelines now followed
                 across the frontend team.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> Next.js 16 · React 19 · TypeScript (strict) · Tailwind v4 ·
-              Radix UI · next-intl · @dnd-kit · Recharts · Tiptap · CodeMirror · Socket.IO · Firebase · Paddle ·
-              Docker</p>
+            <p class="stack"><span class="k">Production</span> React 18 · Redux + thunk · React Router 5 · axios ·
+              i18next · Socket.IO · Nx monorepo · jQuery interop</p>
+            <p class="stack"><span class="k">Rewrite</span> Next.js 16 (App Router, route handlers, edge middleware) ·
+              React 19 · TypeScript strict · Tailwind v4 · Radix UI · React Context · next-intl · @dnd-kit · Recharts ·
+              Tiptap · CodeMirror · Firebase · Paddle · Docker</p>
           </div>
 
           <div class="stream">
