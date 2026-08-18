@@ -549,6 +549,18 @@ code {
 }
 
 
+/* Job-level metadata (process model, tooling). Reuses the .stack
+   label-value idiom, but needs more air since it sits under the
+   job context rather than tucked beneath a stream's bullets. */
+.process {
+  margin-top: 7px;
+}
+
+.process b {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
 /* ---------- compact rows: awards, education, activities ---------- */
 .rows {
   display: flex;
@@ -675,9 +687,25 @@ code {
 
   body {
     padding: 0;
-    font-size: 9.5pt;
+    /* 9pt keeps the CV readable in print while reclaiming roughly a page
+       of vertical space — cheaper than deleting verified detail. */
+    font-size: 8.75pt;
+    line-height: 1.4;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
+  }
+
+  /* Tighter vertical rhythm for print only; the screen version keeps its air. */
+  section {
+    gap: 10px;
+  }
+
+  ul.bullets {
+    gap: 3px;
+  }
+
+  .job {
+    gap: 7px;
   }
 
   .toolbar {
@@ -686,7 +714,7 @@ code {
 
   .sheet {
     max-width: none;
-    gap: 16px;
+    gap: 13px;
   }
 
   .name {
