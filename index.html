@@ -27,6 +27,10 @@
         if (saved === "light" || saved === "dark") {
           document.documentElement.setAttribute("data-theme", saved);
         }
+        var view = localStorage.getItem("cv-view");
+        if (view === "compact" || view === "full") {
+          document.documentElement.setAttribute("data-view", view);
+        }
       } catch (e) { /* private mode — fall back to system preference */ }
     })();
   </script>
@@ -43,6 +47,15 @@
         </path>
       </svg>
       <span id="theme-label">Theme</span>
+    </button>
+
+    <button class="tool" id="view-toggle" type="button"
+      title="Compact is what the PDF contains; Full is the deep-dive web version">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h10"></path>
+      </svg>
+      <span id="view-label">Compact</span>
     </button>
 
     <button class="tool" id="print-btn" type="button">
@@ -137,10 +150,11 @@
             class="dot">·</span> rich-text editors (Tiptap, CodeMirror) <span class="dot">·</span> <b>i18n at scale</b>
           (next-intl, ICU) <span class="dot">·</span> realtime (Socket.IO, Firebase)</dd>
 
-        <dt>AI Features (FE)</dt>
-        <dd>Consuming backend AI endpoints <span class="dot">·</span> payload assembly &amp; file upload <span
-            class="dot">·</span> long-running job UX <span class="dot">·</span> rendering generated output into an
-          editable document model</dd>
+        <dt class="deep">AI Features (FE)</dt>
+        <dd class="deep">Consuming backend AI endpoints <span class="dot">·</span> payload assembly &amp; file upload
+          <span class="dot">·</span> long-running job UX <span class="dot">·</span> rendering generated output into an
+          editable document model
+        </dd>
 
         <dt>Platform</dt>
         <dd><b>Paddle</b> subscriptions &amp; proration <span class="dot">·</span> OAuth / SSO / JWT <span
@@ -159,13 +173,14 @@
           reports, async collaboration</dd>
       </dl>
 
-      <p class="sub-label">Main Responsibilities</p>
+      <p class="sub-label deep">Main Responsibilities</p>
       <!-- Deliberately one line each: the detail lives in 2.2, and
            repeating it here cost a whole page. -->
-      <ul class="bullets responsibilities">
+      <ul class="bullets responsibilities deep">
         <li>Build and maintain <b>product surfaces</b> on a large Next.js / React / AngularJs platform</li>
         <li>Define <b>shared frontend contracts</b> adopted platform-wide — data tables, i18n, theming</li>
-        <li>Integrate <b>third-party platforms</b> — billing, auth, e-commerce, analytics</li>
+        <li>Integrate <b>third-party platforms</b>, e-commerce, analytics</li>
+        <li>SEO & Performance Optimization</li>
         <li>Work in <b>Agile Scrum</b> — sprint planning, refinement, retrospectives</li>
       </ul>
 
@@ -178,141 +193,122 @@
           <span class="title">Frontend Developer</span>
           <span class="dates">07/2024 — Present</span>
         </div>
-        <p class="job-context">
+        <p class="job-context deep">
           Vietnam's leading no-code landing-page platform. Two sides to the product: the <b>builder</b> customers author
           in, and the <b>dashboard</b> they run their business from. I work on both, across the production engine, the
           live dashboard and the ground-up rewrite.
         </p>
-        <p class="stack process"><span class="k">Process</span> Agile Scrum — sprint planning, refinement,
+        <p class="stack process deep"><span class="k">Process</span> Agile Scrum — sprint planning, refinement,
           retrospectives — run on the company's own project-management product, which the team also builds and ships</p>
 
         <div class="track">
 
           <div class="stream">
             <div class="stream-label">Builder — the editor customers author in</div>
-            <p class="stream-intro">Drag-and-drop editor for landing pages, popups and slide decks, plus the checkout
-              customers sell through.</p>
+            <p class="stream-intro deep">Drag-and-drop editor for landing pages, popups and slide decks, plus the
+              checkout customers sell through.</p>
             <ul class="bullets">
-              <li><b>~40 element types</b> as self-contained plugins — headline, paragraph, button and button group,
+              <li><b>Element system</b> — around 40 element types built as self-contained plugins (headline, button,
                 image,
-                shape, video, gallery, carousel, menu, tabs, accordion, table, countdown, survey, popup, section and
-                <b>group</b> (nested selection, moved and snapped as one). Each declares its own property schema, so a
-                new type ships without touching the canvas core.
-              </li>
+                video, carousel, tabs, table, countdown, popup, section, <b>group</b>), each declaring its own property
+                schema so a new type ships without touching the canvas core. <b>Every page a customer builds is composed
+                  from this system.</b></li>
+              <li><b>Core canvas editing</b> — snap-and-align against neighbouring edges and centres with live guides,
+                group
+                select and resize, and <b>undo/redo as diffed transactions</b> that record only what changed rather than
+                whole-state snapshots. <b>Customers spend their entire session inside this interaction.</b></li>
               <li><b>Form &amp; checkout</b> — typed fields with validation, reCAPTCHA, Vietnamese province / district /
-                ward address pickers, cart, product and quantity selectors, coupons and order bumps, wired to <b>COD,
-                  bank transfer, VNPAY, MoMo, ZaloPay, ShopeePay, NAPAS, Stripe and PayPal</b>.</li>
-              <li><b>Custom code</b> — per-element and per-page HTML / CSS / JavaScript in an embedded editor, with SASS
-                compiled in the browser.</li>
-              <li><b>Engine architecture</b> — a prototype-based class of roughly 460 methods partitioned by concern:
-                builder
-                operations, getters and setters, mouse and keyboard events, HTML generation, snapping, rollback,
-                attribute mapping and responsive adaptation.</li>
-              <li><b>Undo/redo as diffed transactions</b>, not state snapshots — a transaction captures the affected
-                elements and their children, then records only what actually changed. History is capped, and acting
-                after an undo truncates the redo branch.</li>
-
-              <li>Deliver <b>custom-coded landing pages for enterprise clients</b> on the builder's extension model
-                rather than forking it.</li>
+                ward
+                pickers, cart, product and quantity selectors, coupons and order bumps, wired to <b>COD, bank transfer,
+                  VNPAY, MoMo, ZaloPay, ShopeePay, NAPAS, Stripe and PayPal</b>. <b>Our customers' revenue flows through
+                  this path.</b></li>
+              <li class="deep">Per-element and per-page <b>custom HTML / CSS / JavaScript</b> in an embedded code
+                editor, with SASS compiled in the browser, so power users extend a page without leaving the builder.
+              </li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> <b>Legacy</b> JavaScript ES6 (prototype OOP) · AngularJS 1.8 +
-              ui-router · jQuery &amp; jQuery-UI sortable · TinyMCE · Ace · sass.js · Grunt + Browser
-              · Canvas &amp; DOM geometry · BroadcastChannel · Tiptap · CodeMirror </p>
+            <p class="stack deep"><span class="k">Stack</span> JavaScript ES6 (prototype OOP) · AngularJS 1.8 +
+              ui-router · jQuery &amp; jQuery-UI sortable · TinyMCE · Ace editor · sass.js &nbsp;·&nbsp; React 19 ·
+              TypeScript · @dnd-kit · Canvas &amp; DOM geometry · BroadcastChannel · Tiptap · CodeMirror</p>
           </div>
 
           <div class="stream">
             <div class="stream-label">Dashboard — where customers run the business <span class="meta">current
                 focus</span></div>
-            <p class="stream-intro">Landing pages, e-commerce, CRM and sales pipeline, tasks, marketing automation,
-              reports,
-              blog and settings — on the live React/Redux dashboard and the Next.js rewrite replacing it.</p>
+            <p class="stream-intro deep">Landing pages, e-commerce, CRM and sales pipeline, tasks, marketing automation,
+              reports, blog and settings — on the live React/Redux dashboard and the Next.js rewrite replacing it.</p>
             <ul class="bullets">
-              <li><b>Production dashboard</b> — React 18 in an <b>Nx monorepo</b>: <b>Redux + redux-thunk</b>, React
-                Router 5, <b>REST over axios</b>, i18next, Socket.IO.</li>
-              <li><b>Rewrite</b> — Next.js 16 App Router, React 19, TypeScript strict, Tailwind v4, organised as
-                <b>three
-                  parallel route-group shells</b> (dashboard, auth, full-screen builder) so builder and presenter views
-                escape the dashboard chrome. Deliberately <b>dropped Redux</b>: server state in the data layer,
-                cross-route state in a few contexts, the rest local to the feature.
+              <li><b>Platform rewrite</b> — rebuilt the dashboard in <b>Next.js 16 App Router, React 19, TypeScript
+                  strict
+                  and Tailwind v4</b>, replacing a React 18 + Redux app in an Nx monorepo, and <b>dropped Redux</b>:
+                server
+                state in the data layer, cross-route state in a few contexts, the rest local to the feature. <b>Every
+                  screen built from here on sits on these decisions.</b></li>
+              <li><b>The API layer</b> — one typed client fanning out to <b>six separate backend products</b>, each
+                needing a
+                different identity header set and its own store id in a separate ID space, resolved once at bootstrap.
+                <b>Every piece of data the dashboard shows passes through it.</b>
               </li>
-              <li><b>REST API layer</b> — one typed client fanning out to <b>six separate backend products</b>, split
-                per
-                domain. Each needs a different identity header set (<code>store-id</code>, <code>team-id</code>,
-                <code>Owner-Id</code>) and rejects the others at CORS preflight; each also keys off its own store id in
-                a
-                separate ID space, so ids resolve once at bootstrap and are cached.
+              <li><b>The data-table contract</b> every list screen follows — server-side pagination, search debounced at
+                300&nbsp;ms, sorting, filters, <b>URL-synced state</b>, and <b><code>AbortController</code></b> so rapid
+                filter changes cannot race; it replaced client-side filtering that broke past page one. <b>Adopted by
+                  every list screen in the platform.</b></li>
+              <li><b>CRM sales pipeline</b> — Kanban for deals and tasks with list, to-do and forecast views,
+                <b>optimistic
+                  mutations with snapshot rollback</b>, and board totals from <b>server-computed summaries, never summed
+                  from the loaded page</b>. <b>Sales teams work here all day and reconcile the numbers against real
+                  money.</b>
               </li>
-              <li><b>Data tables</b>, the contract every list screen follows — server-side pagination, search debounced
-                at
-                300&nbsp;ms, sorting, filters, <b>URL-synced state</b>, and <b><code>AbortController</code> signals</b>
-                so
-                rapid filter changes cannot race.</li>
-              <li><b>CRM sales pipeline</b> — Kanban for deals and tasks on @dnd-kit, with list, to-do and forecast
-                views.
-                Card mutations are <b>optimistic with snapshot rollback</b>, and board totals come from
-                <b>server-computed summaries, never summed from the loaded page</b> — the shortcut that silently reports
-                wrong numbers once a pipeline exceeds one page.
+              <li class="deep"><b>Lead routing and segmentation</b> — auto-assign rules as a drag-reorderable priority
+                list holding nested condition groups, with <b>ratio-weighted distribution across staff</b> rather than
+                plain round-robin. The segment builder derives its operators and value-input type from the field.</li>
+              <li class="deep"><b>HTML → LadiPage converter</b> — turns an uploaded third-party page into an editable
+                document, with <b>staged polling backoff</b> for the long-running job and a risk report that falls back
+                to deriving the diverging parts from the converted output itself.</li>
+              <li class="deep"><b>Embedded micro-frontend</b> — a separate flow-editor application in an iframe with
+                <b>origin-validated <code>postMessage</code> both ways</b> for pushing refreshed credentials after a
+                token renewal, kept mounted across navigation so switching pages never reloads it mid-edit.
               </li>
-              <li><b>Lead routing and segmentation</b> — auto-assign rules as a drag-reorderable priority list with
-                nested
-                condition groups and <b>ratio-weighted distribution across staff</b>. The segment builder derives its
-                operators and value-input type from the field.</li>
-              <li><b>Embedded micro-frontend</b> — a separate flow-editor app in an iframe with <b>origin-validated
-                  <code>postMessage</code> both ways</b> for pushing refreshed credentials after a token renewal, kept
-                mounted across navigation so switching pages never reloads it mid-edit.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> <b>Production</b> React 18 · Redux + thunk · React Router 5 ·
-              axios · i18next · Socket.IO · Nx monorepo &nbsp;·&nbsp; <b>Rewrite</b> Next.js 16 (App Router, route
-              handlers, edge middleware) · React 19 · TypeScript strict · Tailwind v4 · Radix UI · React Context ·
-              next-intl · @dnd-kit · Recharts · Tiptap · CodeMirror · Firebase · Paddle · Docker</p>
+            <p class="stack deep"><span class="k">Stack</span> Next.js 16 (App Router, route handlers, edge middleware)
+              ·
+              React 19 · TypeScript strict · Tailwind v4 · Radix UI · React Context · next-intl · @dnd-kit · Recharts ·
+              Tiptap · CodeMirror · Socket.IO · Firebase · Paddle · Docker &nbsp;·&nbsp; React 18 · Redux + thunk ·
+              React Router 5 · axios · i18next · Nx monorepo</p>
           </div>
 
           <div class="stream">
-            <div class="stream-label">Identity &amp; SSO <span class="meta">LadiUID</span></div>
+            <div class="stream-label">Single sign-on across the product family <span class="meta">LadiUID</span></div>
             <ul class="bullets">
-              <li>Hold the <b>JWT in a cookie rather than localStorage</b>, deliberately: the edge middleware, the React
-                app
-                and the <b>embedded legacy AngularJS builder</b> all read one value, so the legacy builder needs no
-                token
-                bridge and signing out in one tab propagates everywhere.</li>
-              <li>Built the full identity surface against the platform's <b>LadiUID</b> service — sign-in, signup with
-                OTP verification, password reset and change, session activity history, sign-out-all-devices — plus
-                <b>TOTP two-factor</b> with a trusted-device list and per-device revocation.
+              <li>Built authentication against the platform's <b>LadiUID</b> identity service — sign-in, signup with
+                OTP,
+                password reset, <b>OAuth2 with Google and Facebook</b>, <b>TOTP two-factor</b>. The JWT lives <b>in a
+                  cookie rather than localStorage</b>, deliberately: the edge middleware, the React app and the
+                <b>embedded legacy AngularJS builder</b> all read one value, so the legacy builder needs no token bridge
+                and signing out in one tab propagates everywhere. <b>Every application in the ecosystem authenticates
+                  through this.</b>
               </li>
-              <li><b>OAuth2 with Google and Facebook</b> through a popup bridge relaying the provider's code back via
-                <code>postMessage</code>. The middleware whitelists that path, since the ordinary "authenticated user on
-                an auth route → redirect" guard would otherwise hijack the callback.
+              <li class="deep">Wrote the <b>token-renewal interceptor</b> — a 401 / 498 / 503 triggers one silent
+                renewal and a single retry, with an opt-out flag so the auth endpoints themselves cannot recurse through
+                it. OAuth callbacks arrive through a popup bridge relaying the provider's code via
+                <code>postMessage</code>, on a path the middleware must whitelist or the "authenticated user on an auth
+                route → redirect" guard hijacks the callback.
               </li>
-
             </ul>
-            <p class="stack"><span class="k">Stack</span> LadiUID SSO · OAuth2 (Google, Facebook) · JWT in cookie ·
-              Next.js edge middleware · cross-tab session sync</p>
           </div>
 
           <div class="stream">
-            <div class="stream-label">AI features — the frontend half <span class="meta">models owned by
-                backend</span></div>
-            <p class="stream-intro">Client side of the platform's AI features — landing-page generation, image
-              generation and
-              analysis, copywriting, CRO suggestions. Models and prompting sit behind backend endpoints.</p>
+            <div class="stream-label">AI features <span class="meta">models owned by backend</span></div>
             <ul class="bullets">
-              <li>Built the AI surface inside the builder — command bar, chat-style panel, layout picker,
-                image-generation
-                dialog, per-section AI bar, onboarding and loading overlays, design status bar.</li>
-              <li><b>Assemble the request and handle the wait</b>: collect the prompt and reference images, upload the
-                files,
-                build the payload the endpoint expects, and hold progress state so the editor stays usable — with a
-                clear
-                failure path when the service is down.</li>
-              <li><b>Apply the result onto the builder's element tree</b> rather than dropping in static HTML, so every
-                generated section lands as real, editable canvas elements — the difference between a demo and something
-                customers actually ship.</li>
+              <li>Shipped the client side of the platform's AI features — landing-page generation from a prompt, image
+                generation and analysis, a copywriting assistant, CRO suggestions. The result is <b>applied onto the
+                  builder's element tree rather than dropped in as static HTML</b>, so every generated section lands as
+                real, editable canvas elements. <b>It is the difference between a demo and output customers actually
+                  ship.</b></li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> React 19 · TypeScript · REST integration with backend AI
-              endpoints · multipart upload · long-running job UX · canvas element mapping</p>
           </div>
 
         </div>
+
       </article>
 
       <article class="job">
@@ -321,10 +317,11 @@
           <span class="title">Frontend Developer</span>
           <span class="dates">09/2021 — 06/2024</span>
         </div>
-        <p class="job-context">
+        <p class="job-context deep">
           EdTech group behind Monkey. Shipped products across e-learning, CRM and AI-assisted learning.
         </p>
-        <p class="stack process"><span class="k">Process</span> Agile Scrum — sprint planning, refinement, stand-ups and
+        <p class="stack process deep"><span class="k">Process</span> Agile Scrum — sprint planning, refinement,
+          stand-ups and
           retrospectives — tracked in Jira</p>
         <p class="stack process"><span class="k">Team</span> <b>Sole frontend developer</b> on monkey.edu.vn, Monkey
           Class, AI M-Speaking and the Tutoring CRM — each paired with one backend engineer, so I owned the entire
@@ -335,13 +332,16 @@
           <div class="stream">
             <div class="stream-label">monkey.edu.vn — corporate site <span class="meta">02/2024 — 06/2024</span></div>
             <ul class="bullets">
-              <li>Owned <b>Core Web Vitals</b> (LCP, CLS, TTFB, Speed Index) and technical SEO for the company's main
-                marketing site — image and font loading strategy, removing render-blocking resources, and tracking down
-                layout shifts across the course and blog templates.</li>
-              <li>Converted the site to <b>multilingual</b> and instrumented GA event tracking across the enrolment
+              <li>Owned <b>Core Web Vitals</b> and technical SEO for the company's main marketing site — image and font
+                loading strategy, removing render-blocking resources, and tracking down layout shifts across the course
+                and blog templates. <b>Lifted the Lighthouse performance score from 50–55 to 70–75.</b></li>
+              <li class="deep">Converted the site to <b>multilingual</b> and instrumented GA event tracking across the
+                enrolment
                 funnel, giving marketing per-step drop-off visibility they previously had to infer.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> JavaScript · PHP (Blade) · jQuery · Google Analytics ·
+            <p class="stack"><span class="k">Result</span> FCP 0.3–0.5s · LCP 2.0s · CLS 0.00–0.08 · Speed Index
+              3.0s · Lighthouse performance 70–75</p>
+            <p class="stack deep"><span class="k">Stack</span> JavaScript · PHP (Blade) · jQuery · Google Analytics ·
               Clevertap</p>
           </div>
 
@@ -352,28 +352,33 @@
               <li><b>Monkey Class</b> — built the virtual-classroom core from scratch: class, student and teacher
                 management, document sharing, video lessons, <b>homework assignment and attendance tracking</b> for
                 individual students and whole classes.</li>
-              <li><b>AI M-Speaking</b> — <b>browser audio recording and the pronunciation-scoring UI</b> for young
+              <li class="deep"><b>AI M-Speaking</b> — <b>browser audio recording and the pronunciation-scoring UI</b>
+                for young
                 learners (scoring returned by a backend service), with automated result delivery to parents by email and
                 social sharing.</li>
-              <li><b>Tutoring CRM</b> — internal <b>CRM for course, schedule and classroom management</b>, a
+              <li class="deep"><b>Tutoring CRM</b> — internal <b>CRM for course, schedule and classroom management</b>,
+                a
                 parent-facing portal for tracking learning progress, and an interactive assignment / game module.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> Next.js 13 · Angular (CRM) · Zustand · React Hook Form + Yup ·
+            <p class="stack deep"><span class="k">Stack</span> Next.js 13 · Angular (CRM) · Zustand · React Hook Form +
+              Yup ·
               Web Audio / MediaRecorder · Axios · Bootstrap 4–5 · GA, Clevertap · CI/CD</p>
           </div>
 
           <div class="stream">
             <div class="stream-label">hoc10.vn — e-textbook platform <span class="meta">09/2021 — 04/2023</span></div>
             <ul class="bullets">
-              <li>Developed the <b>e-textbook library and question bank</b>, scoped and shipped the exam and homework
+              <li class="deep">Developed the <b>e-textbook library and question bank</b>, scoped and shipped the exam
+                and homework
                 flows for students alongside training and lecture tools for teachers, and built a CMS letting content
                 creators configure exams, lectures, slides and games without engineering support.</li>
               <li>Built <b>BookTools</b>, a canvas-based authoring tool for interactive textbook activities — my first
                 production drag-and-drop editor, and the foundation for the builder work I do today.</li>
-              <li>Worked in a <b>micro-frontend architecture</b> with <b>SSO</b> across the platform's applications, and
+              <li class="deep">Worked in a <b>micro-frontend architecture</b> with <b>SSO</b> across the platform's
+                applications, and
                 owned <b>performance and technical SEO</b> for the public-facing library.</li>
             </ul>
-            <p class="stack"><span class="k">Stack</span> JavaScript · React · Fabric.js · Redux · React Router ·
+            <p class="stack deep"><span class="k">Stack</span> JavaScript · React · Fabric.js · Redux · React Router ·
               Styled-components · React Hook Form · micro-frontends · SSO / JWT</p>
           </div>
 
@@ -428,6 +433,31 @@
       darkQuery.addEventListener("change", function () {
         if (!root.getAttribute("data-theme")) render();
       });
+
+      // Two densities from one document. The PDF people receive is the
+      // compact one; the web page defaults to full because that is the
+      // link worth sharing. `full` is stored explicitly so print can
+      // tell "never chose" from "deliberately chose full".
+      var viewBtn = document.getElementById("view-toggle");
+      var viewLabel = document.getElementById("view-label");
+
+      function currentView() {
+        return root.getAttribute("data-view") === "compact" ? "compact" : "full";
+      }
+
+      function renderView() {
+        // The button offers the mode you are NOT in.
+        viewLabel.textContent = currentView() === "compact" ? "Full" : "Compact";
+      }
+
+      viewBtn.addEventListener("click", function () {
+        var next = currentView() === "compact" ? "full" : "compact";
+        root.setAttribute("data-view", next);
+        try { localStorage.setItem("cv-view", next); } catch (e) { /* private mode */ }
+        renderView();
+      });
+
+      renderView();
 
       document.getElementById("print-btn").addEventListener("click", function () {
         window.print();

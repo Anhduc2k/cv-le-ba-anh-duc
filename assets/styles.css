@@ -561,6 +561,35 @@ code {
   font-weight: 600;
 }
 
+/* ============================================================
+   TWO DENSITIES, ONE DOCUMENT
+   .deep marks the deep-dive detail. The web page shows everything
+   (it is the link you share); print drops .deep so the PDF you
+   actually send is short. data-view lets you preview the compact
+   version on screen, or force the full one into print.
+   ============================================================ */
+:root[data-view="compact"] .deep {
+  display: none;
+}
+
+/* Compact spends its space on evidence, not on the skills grid. */
+:root[data-view="compact"] .skills {
+  gap: 3px 16px;
+}
+
+:root[data-view="compact"] .skills dt {
+  line-height: 1.35;
+}
+
+:root[data-view="compact"] section {
+  gap: 9px;
+}
+
+/* Empty <ul> left behind when every bullet in it is .deep */
+:root[data-view="compact"] ul.bullets:not(:has(li:not(.deep))) {
+  display: none;
+}
+
 /* ---------- compact rows: awards, education, activities ---------- */
 .rows {
   display: flex;
@@ -689,8 +718,8 @@ code {
     padding: 0;
     /* 9pt keeps the CV readable in print while reclaiming roughly a page
        of vertical space — cheaper than deleting verified detail. */
-    font-size: 8.75pt;
-    line-height: 1.4;
+    font-size: 9.2pt;
+    line-height: 1.42;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
@@ -709,6 +738,37 @@ code {
   }
 
   .toolbar {
+    display: none;
+  }
+
+  /* The sent-out PDF is the compact one unless "Full" is selected. */
+  :root:not([data-view="full"]) .deep {
+    display: none;
+  }
+
+  :root:not([data-view="full"]) .skills {
+    gap: 3px 16px;
+  }
+
+  :root:not([data-view="full"]) .skills dt {
+    line-height: 1.35;
+  }
+
+  :root:not([data-view="full"]) section {
+    gap: 8px;
+  }
+
+  /* Compact would rather split a bullet list across the fold than push a
+     whole stream to the next page and leave the tail of this one empty. */
+  :root:not([data-view="full"]) .stream {
+    break-inside: auto;
+  }
+
+  :root:not([data-view="full"]) .job {
+    break-inside: auto;
+  }
+
+  :root:not([data-view="full"]) ul.bullets:not(:has(li:not(.deep))) {
     display: none;
   }
 
