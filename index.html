@@ -27,10 +27,6 @@
         if (saved === "light" || saved === "dark") {
           document.documentElement.setAttribute("data-theme", saved);
         }
-        var view = localStorage.getItem("cv-view");
-        if (view === "compact" || view === "full") {
-          document.documentElement.setAttribute("data-view", view);
-        }
       } catch (e) { /* private mode — fall back to system preference */ }
     })();
   </script>
@@ -104,12 +100,9 @@
           platform in <strong>Next.js and React</strong>.
         </p>
         <p>
-          My next step is a
-          <strong>senior frontend</strong> role, owning architecture decisions and mentoring a growing team. From there
-          I
-          am working deliberately toward <strong>fullstack</strong> — I already build the server side of my own features
-          in route handlers, edge middleware and API integration, and I want to own more of the stack behind what I
-          ship.
+          My next step is a <strong>senior frontend</strong> role, owning architecture decisions and mentoring a growing
+          team. From there I am working deliberately toward <strong>fullstack</strong> — I already build the server side
+          of my own features in route handlers, edge middleware and API integration.
         </p>
       </div>
     </section>
@@ -125,10 +118,8 @@
       <p class="sub-label">Technical</p>
       <dl class="skills">
         <dt>Core</dt>
-        <dd><b>TypeScript</b> (strict) <span class="dot">·</span> JavaScript ES2022+ <span class="dot">·</span> HTML5
-          <span class="dot">·</span> CSS3 <span class="dot">·</span> Web APIs (Canvas, MediaRecorder, BroadcastChannel,
-          IntersectionObserver)
-        </dd>
+        <dd><b>TypeScript</b> (strict) <span class="dot">·</span> JavaScript ES2022+ <span class="dot">·</span> HTML5,
+          CSS3 <span class="dot">·</span> Web APIs (Canvas, MediaRecorder, BroadcastChannel, IntersectionObserver)</dd>
 
         <dt>Frameworks</dt>
         <dd><b>React 19</b> <span class="dot">·</span> <b>Next.js 16</b> — App Router, RSC, SSR/ISR, route handlers,
@@ -147,8 +138,8 @@
 
         <dt>Specialised</dt>
         <dd><b>Drag-and-drop &amp; canvas</b> — dnd-kit, Fabric.js, snap &amp; align, hit-testing, undo/redo <span
-            class="dot">·</span> rich-text editors (Tiptap, CodeMirror) <span class="dot">·</span> <b>i18n at scale</b>
-          (next-intl, ICU) <span class="dot">·</span> realtime (Socket.IO, Firebase)</dd>
+            class="dot">·</span> Tiptap, CodeMirror <span class="dot">·</span> <b>i18n at scale</b> (next-intl, ICU)
+          <span class="dot">·</span> Socket.IO, Firebase</dd>
 
         <dt class="deep">AI Features (FE)</dt>
         <dd class="deep">Consuming backend AI endpoints <span class="dot">·</span> payload assembly &amp; file upload
@@ -169,22 +160,19 @@
         </dd>
 
         <dt>Languages</dt>
-        <dd>English (intermediate) — technical documentation, written
-          reports, async collaboration</dd>
+        <dd>English (intermediate) — technical documentation, written reports, async collaboration</dd>
       </dl>
 
       <p class="sub-label deep">Main Responsibilities</p>
-      <!-- Deliberately one line each: the detail lives in 2.2, and
-           repeating it here cost a whole page. -->
       <ul class="bullets responsibilities deep">
-        <li>Build and maintain <b>product surfaces</b> on a large Next.js / React / AngularJs platform</li>
+        <li>Build and maintain <b>product surfaces</b> on a large Next.js / React / AngularJS platform</li>
         <li>Define <b>shared frontend contracts</b> adopted platform-wide — data tables, i18n, theming</li>
         <li>Integrate <b>third-party platforms</b>, e-commerce, analytics</li>
-        <li>SEO & Performance Optimization</li>
+        <li>SEO &amp; performance optimisation</li>
         <li>Work in <b>Agile Scrum</b> — sprint planning, refinement, retrospectives</li>
       </ul>
 
-      <!-- 2.2 — the projects themselves -->
+      <!-- 2.2 -->
       <h3 class="sub-head">Key Projects &amp; Responsibilities</h3>
 
       <article class="job">
@@ -195,8 +183,7 @@
         </div>
         <p class="job-context deep">
           Vietnam's leading no-code landing-page platform. Two sides to the product: the <b>builder</b> customers author
-          in, and the <b>dashboard</b> they run their business from. I work on both, across the production engine, the
-          live dashboard and the ground-up rewrite.
+          in, and the <b>dashboard</b> they run their business from.
         </p>
         <p class="stack process deep"><span class="k">Process</span> Agile Scrum — sprint planning, refinement,
           retrospectives — run on the company's own project-management product, which the team also builds and ships</p>
@@ -208,23 +195,19 @@
             <p class="stream-intro deep">Drag-and-drop editor for landing pages, popups and slide decks, plus the
               checkout customers sell through.</p>
             <ul class="bullets">
-              <li><b>Element system</b> — around 40 element types built as self-contained plugins (headline, button,
-                image,
-                video, carousel, tabs, table, countdown, popup, section, <b>group</b>), each declaring its own property
-                schema so a new type ships without touching the canvas core. <b>Every page a customer builds is composed
-                  from this system.</b></li>
-              <li><b>Core canvas editing</b> — snap-and-align against neighbouring edges and centres with live guides,
-                group
-                select and resize, and <b>undo/redo as diffed transactions</b> that record only what changed rather than
-                whole-state snapshots. <b>Customers spend their entire session inside this interaction.</b></li>
-              <li><b>Form &amp; checkout</b> — typed fields with validation, reCAPTCHA, Vietnamese province / district /
-                ward
-                pickers, cart, product and quantity selectors, coupons and order bumps, wired to <b>COD, bank transfer,
-                  VNPAY, MoMo, ZaloPay, ShopeePay, NAPAS, Stripe and PayPal</b>. <b>Our customers' revenue flows through
-                  this path.</b></li>
+              <li><b>The canvas core is the riskiest code in the product</b> — every editing session runs through it,
+                and undo is the feature nobody notices until it loses their work. I designed the ~40 element types as
+                <b>self-contained plugins declaring their own property schema</b>, so a new type never requires opening
+                the core; and built undo/redo as <b>diffed transactions</b> — capture the affected elements and their
+                children, record only what changed — because whole-state snapshots do not hold up on element-heavy
+                pages.</li>
+              <li><b>Checkout is the one surface where a frontend defect costs the customer money rather than
+                  patience.</b> I built the form and checkout stack — validated fields, address pickers down to ward
+                level, cart, quantity, coupons, order bumps — against <b>nine payment providers</b> (COD, bank transfer,
+                VNPAY, MoMo, ZaloPay, ShopeePay, NAPAS, Stripe, PayPal), each with its own redirect and callback
+                behaviour.</li>
               <li class="deep">Per-element and per-page <b>custom HTML / CSS / JavaScript</b> in an embedded code
-                editor, with SASS compiled in the browser, so power users extend a page without leaving the builder.
-              </li>
+                editor, with SASS compiled in the browser, so power users extend a page without leaving the builder.</li>
             </ul>
             <p class="stack deep"><span class="k">Stack</span> JavaScript ES6 (prototype OOP) · AngularJS 1.8 +
               ui-router · jQuery &amp; jQuery-UI sortable · TinyMCE · Ace editor · sass.js &nbsp;·&nbsp; React 19 ·
@@ -237,40 +220,36 @@
             <p class="stream-intro deep">Landing pages, e-commerce, CRM and sales pipeline, tasks, marketing automation,
               reports, blog and settings — on the live React/Redux dashboard and the Next.js rewrite replacing it.</p>
             <ul class="bullets">
-              <li><b>Platform rewrite</b> — rebuilt the dashboard in <b>Next.js 16 App Router, React 19, TypeScript
-                  strict
-                  and Tailwind v4</b>, replacing a React 18 + Redux app in an Nx monorepo, and <b>dropped Redux</b>:
-                server
-                state in the data layer, cross-route state in a few contexts, the rest local to the feature. <b>Every
-                  screen built from here on sits on these decisions.</b></li>
-              <li><b>The API layer</b> — one typed client fanning out to <b>six separate backend products</b>, each
-                needing a
-                different identity header set and its own store id in a separate ID space, resolved once at bootstrap.
-                <b>Every piece of data the dashboard shows passes through it.</b>
-              </li>
-              <li><b>The data-table contract</b> every list screen follows — server-side pagination, search debounced at
-                300&nbsp;ms, sorting, filters, <b>URL-synced state</b>, and <b><code>AbortController</code></b> so rapid
-                filter changes cannot race; it replaced client-side filtering that broke past page one. <b>Adopted by
-                  every list screen in the platform.</b></li>
-              <li><b>CRM sales pipeline</b> — Kanban for deals and tasks with list, to-do and forecast views,
-                <b>optimistic
-                  mutations with snapshot rollback</b>, and board totals from <b>server-computed summaries, never summed
-                  from the loaded page</b>. <b>Sales teams work here all day and reconcile the numbers against real
-                  money.</b>
-              </li>
-              <li class="deep"><b>Lead routing and segmentation</b> — auto-assign rules as a drag-reorderable priority
-                list holding nested condition groups, with <b>ratio-weighted distribution across staff</b> rather than
-                plain round-robin. The segment builder derives its operators and value-input type from the field.</li>
-              <li class="deep"><b>HTML → LadiPage converter</b> — turns an uploaded third-party page into an editable
-                document, with <b>staged polling backoff</b> for the long-running job and a risk report that falls back
-                to deriving the diverging parts from the converted output itself.</li>
-              <li class="deep"><b>Embedded micro-frontend</b> — a separate flow-editor application in an iframe with
-                <b>origin-validated <code>postMessage</code> both ways</b> for pushing refreshed credentials after a
-                token renewal, kept mounted across navigation so switching pages never reloads it mid-edit.
-              </li>
+              <li><b>The previous dashboard routed every piece of state through Redux</b>, paying boilerplate for state
+                never actually shared. Rebuilding it in <b>Next.js 16 App Router, React 19, TypeScript strict and
+                  Tailwind v4</b>, I <b>dropped Redux entirely</b>: server state in the data layer, only cross-route
+                state in context, the rest local to its feature.</li>
+              <li><b>Six backend products, each demanding a different identity header set and rejecting the others at
+                  CORS preflight</b> — each keyed to its own store id, where the wrong one returns <b>an empty list
+                  instead of an error</b>, so a mistake looks like "no data" rather than a bug. I built one typed client
+                resolving the right identity per target.</li>
+              <li><b>Lists were sorting and filtering client-side over a single fetched page</b>, so results silently
+                went wrong past page one. I defined the contract every list now follows: server-side pagination,
+                debounced search, sorting, filters, <b>URL-synced state</b>, and <b><code>AbortController</code></b> so
+                fast filter changes cannot race. <b>One contract retired the bug class across every list in the
+                  product.</b></li>
+              <li><b>Board totals summed from the loaded page look right in a demo and go wrong once a pipeline exceeds
+                  one page</b> — and sales teams reconcile them against real money. I took totals from
+                <b>server-computed summaries</b>, and made card mutations <b>optimistic with snapshot rollback</b> so
+                dragging a deal feels instant without leaving the board lying on a failed write.</li>
+              <li class="deep"><b>Plain round-robin ignores that staff have different capacity</b>, so I built
+                auto-assign as a drag-reorderable priority list of rules over nested condition groups, with
+                <b>ratio-weighted distribution across staff</b>. The segment builder derives its operators and
+                value-input type from the field itself.</li>
+              <li class="deep"><b>Conversion runs long enough that a held-open request dies in the browser</b>, so the
+                HTML→LadiPage converter <b>polls with staged backoff</b> instead. When the backend returns no risk
+                analysis, the client <b>derives the likely-diverging parts from the converted output itself</b>.</li>
+              <li class="deep"><b>Embedding a separate editor normally means reloading it on every navigation and
+                  losing in-progress work.</b> I mounted the flow-editor application in an iframe kept alive across
+                dashboard navigation, with <b>origin-validated <code>postMessage</code> both ways</b> so refreshed
+                credentials can be pushed in after a token renewal.</li>
             </ul>
-            <p class="stack deep"><span class="k">Stack</span> Next.js 16 (App Router, route handlers, edge middleware)
-              ·
+            <p class="stack deep"><span class="k">Stack</span> Next.js 16 (App Router, route handlers, edge middleware) ·
               React 19 · TypeScript strict · Tailwind v4 · Radix UI · React Context · next-intl · @dnd-kit · Recharts ·
               Tiptap · CodeMirror · Socket.IO · Firebase · Paddle · Docker &nbsp;·&nbsp; React 18 · Redux + thunk ·
               React Router 5 · axios · i18next · Nx monorepo</p>
@@ -279,36 +258,31 @@
           <div class="stream">
             <div class="stream-label">Single sign-on across the product family <span class="meta">LadiUID</span></div>
             <ul class="bullets">
-              <li>Built authentication against the platform's <b>LadiUID</b> identity service — sign-in, signup with
-                OTP,
-                password reset, <b>OAuth2 with Google and Facebook</b>, <b>TOTP two-factor</b>. The JWT lives <b>in a
-                  cookie rather than localStorage</b>, deliberately: the edge middleware, the React app and the
-                <b>embedded legacy AngularJS builder</b> all read one value, so the legacy builder needs no token bridge
-                and signing out in one tab propagates everywhere. <b>Every application in the ecosystem authenticates
-                  through this.</b>
-              </li>
+              <li><b>The legacy AngularJS builder and the new React app had to share one session</b>, or users would be
+                asked to sign in twice inside the same product. I built auth against the platform's <b>LadiUID</b>
+                service — sign-in, OTP signup, password reset, <b>OAuth2 Google and Facebook</b>, <b>TOTP
+                  two-factor</b> — and kept the JWT <b>in a cookie rather than localStorage</b> so the edge middleware,
+                the React app and the embedded legacy builder all read one value, with no token bridge and sign-out
+                propagating across tabs.</li>
               <li class="deep">Wrote the <b>token-renewal interceptor</b> — a 401 / 498 / 503 triggers one silent
                 renewal and a single retry, with an opt-out flag so the auth endpoints themselves cannot recurse through
                 it. OAuth callbacks arrive through a popup bridge relaying the provider's code via
                 <code>postMessage</code>, on a path the middleware must whitelist or the "authenticated user on an auth
-                route → redirect" guard hijacks the callback.
-              </li>
+                route → redirect" guard hijacks the callback.</li>
             </ul>
           </div>
 
           <div class="stream">
             <div class="stream-label">AI features <span class="meta">models owned by backend</span></div>
             <ul class="bullets">
-              <li>Shipped the client side of the platform's AI features — landing-page generation from a prompt, image
-                generation and analysis, a copywriting assistant, CRO suggestions. The result is <b>applied onto the
-                  builder's element tree rather than dropped in as static HTML</b>, so every generated section lands as
-                real, editable canvas elements. <b>It is the difference between a demo and output customers actually
-                  ship.</b></li>
+              <li><b>Generated pages are worthless if the customer cannot then edit them.</b> I shipped the client side
+                of the AI features — landing-page generation from a prompt, image generation and analysis, a copywriting
+                assistant, CRO suggestions — and <b>applied the result onto the builder's element tree rather than
+                  dropping in static HTML</b>, so every generated section lands as real, editable canvas elements.</li>
             </ul>
           </div>
 
         </div>
-
       </article>
 
       <article class="job">
@@ -450,10 +424,12 @@
         viewLabel.textContent = currentView() === "compact" ? "Full" : "Compact";
       }
 
+      // Density is deliberately NOT persisted: whoever opens the shared link
+      // should always land on the full deep-dive version. Compact is a preview
+      // of what the PDF contains, for this visit only.
       viewBtn.addEventListener("click", function () {
         var next = currentView() === "compact" ? "full" : "compact";
         root.setAttribute("data-view", next);
-        try { localStorage.setItem("cv-view", next); } catch (e) { /* private mode */ }
         renderView();
       });
 
