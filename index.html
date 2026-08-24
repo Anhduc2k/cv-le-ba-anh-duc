@@ -93,16 +93,15 @@
       </div>
       <div class="summary">
         <p>
-          Frontend developer with about 4 years building complex, long-lived web products — no-code builders, CRM and
-          e-commerce dashboards, and AI-assisted tooling. For the past two years at <strong>LadiPage</strong>, Vietnam's
-          leading landing-page platform, I have owned core editing surfaces of its drag-and-drop canvas engine and been
-          a
-          core contributor on the ground-up rebuild of the platform in Next.js and React.
+          Frontend developer, about 4 years. I work on no-code builders, CRM and e-commerce dashboards, and
+          AI-assisted tools. The last two years at <strong>LadiPage</strong>, Vietnam's biggest landing-page platform,
+          where I maintain the drag-and-drop builder engine and work on the Next.js rebuild of the dashboard.
         </p>
         <p>
-          My next step is a <strong>senior frontend</strong> role, owning architecture decisions and mentoring a growing
-          team. From there I am working deliberately toward <strong>fullstack</strong> — I already build the server side
-          of my own features in route handlers, edge middleware and API integration.
+          I'm looking for a <strong>senior frontend</strong> role where I own architecture decisions and help newer
+          developers. Longer term I want to move toward <strong>fullstack</strong>. I already write the server side of
+          my
+          own features: route handlers, edge middleware, API integration.
         </p>
       </div>
     </section>
@@ -118,17 +117,17 @@
            interviewer trusts the top tier more when a bottom tier exists. -->
       <dl class="skills">
         <dt>Experienced</dt>
-        <dd>Used daily on production code. I design, build and debug these independently.<br>
+        <dd>I use these every day on production code, and can build and debug on my own.<br>
           <b>TypeScript</b> (strict) <span class="dot">·</span> JavaScript ES6+ <span class="dot">·</span>
           <b>React</b> <span class="dot">·</span> <b>Next.js</b> (App Router, route handlers, middleware) <span
             class="dot">·</span> HTML5, CSS3 <span class="dot">·</span> Tailwind CSS <span class="dot">·</span>
-          <b>drag-and-drop &amp; canvas</b> (dnd-kit, Fabric.js, snap &amp; align, undo/redo) <span class="dot">·</span>
+          drag-and-drop &amp; canvas (dnd-kit, Fabric.js, snap &amp; align, undo/redo) <span class="dot">·</span>
           state management (Context, Redux, Zustand) <span class="dot">·</span> REST integration
           (server-side pagination, cancellation, optimistic updates) <span class="dot">·</span> Git
         </dd>
 
         <dt>Well known</dt>
-        <dd>Shipped production features with these. Productive without ramp-up time.<br>
+        <dd>I've shipped real features with these. No ramp-up needed.<br>
           Radix UI / shadcn <span class="dot">·</span> React Hook Form + Yup / Zod <span class="dot">·</span> Tiptap,
           CodeMirror <span class="dot">·</span> Recharts <span class="dot">·</span> Socket.IO, Firebase <span
             class="dot">·</span> i18n at scale (next-intl, ICU) <span class="dot">·</span> OAuth2 / SSO / JWT <span
@@ -137,7 +136,7 @@
             class="dot">·</span> CI/CD <span class="dot">·</span> Jira, Figma</dd>
 
         <dt>Have knowledge</dt>
-        <dd>Worked alongside these. Can contribute with support from the team.<br>
+        <dd>I've worked next to these. Can pick them up with some support.<br>
           Nx monorepo <span class="dot">·</span> micro-frontend integration <span class="dot">·</span> AI endpoint
           integration (payload assembly, long-running job UX) <span class="dot">·</span> Node-side route handlers <span
             class="dot">·</span> PHP / Blade</dd>
@@ -161,57 +160,61 @@
           <div class="stream">
             <div class="stream-label">LadiPage Builder</div>
             <p class="stream-intro">The drag-and-drop editor customers build landing pages, popups and slide decks in,
-              and the checkout they sell through — the product's core surface, used by every customer every session.</p>
+              plus the checkout they sell through. Every customer uses it, every session.</p>
             <ul class="bullets">
-              <li>Joined an established codebase and now <b>maintain and extend the engine alone</b> — every new element
-                type, feature and production defect in the editor comes through me.</li>
-              <li>Element types are self-contained plugins with their own property schema, so new ones ship without the
-                canvas core being opened — and every field I add stays <b>optional</b>, or pages authored by older
-                builder versions stop loading.</li>
-              <li>Undo/redo runs on <b>diffed transactions</b> rather than whole-state snapshots, which do not survive
-                element-heavy pages; keeping it correct means every field I add has to take part in the diff.</li>
-              <li>Extend and support the form and checkout stack — validated fields, address pickers, cart, quantity,
-                coupons, order bumps — across <b>nine payment providers</b>, each with its own redirect and callback
-                behaviour.</li>
-              <li class="deep">Integrated the AI features into the canvas by <b>applying model output onto the element
-                  tree</b> instead of static HTML, so generated sections stay editable.</li>
+              <li>I came into an existing codebase and now maintain the engine on my own. New element types,
+                features and production bugs all come to me.</li>
+              <li>Element types are plugins with their own property schema, so I can add one without touching the
+                canvas core. New fields have to stay optional; otherwise pages built on older versions stop
+                loading.</li>
+              <li>Undo/redo works on diffs, not full-state snapshots. Every field I add has to take part in the
+                diff or history breaks.</li>
+              <li>I extend and support the form and checkout stack (validated fields, address pickers, cart, quantity,
+                coupons, order bumps) across nine payment providers. Each one has its own redirect and callback
+                quirks.</li>
+              <li class="deep">Wired the AI features into the canvas. Model output becomes real elements on the
+                element tree. A generated section is
+                still editable afterwards.</li>
             </ul>
             <p class="stack"><span class="k">Tech</span> JavaScript ES6 · AngularJS · jQuery · React 19 · TypeScript ·
               @dnd-kit · Canvas &amp; DOM geometry · Tiptap · CodeMirror</p>
-            <p class="stack"><span class="k">Role</span> Sole maintainer — feature development, bug fixing and
-              production support for the editor · work within the engine's extension model rather than forking it</p>
+            <p class="stack"><span class="k">Role</span> Sole maintainer: feature work, bug fixing, production support ·
+              build inside the
+              engine's extension model</p>
           </div>
 
           <div class="stream">
             <div class="stream-label">LadiPage Dashboard <span class="meta">current focus</span></div>
-            <p class="stream-intro">Where customers run the business — landing pages, e-commerce, CRM and sales
-              pipeline, tasks, marketing automation, reports and settings. Being rebuilt from a React + Redux
-              application.</p>
+            <p class="stream-intro">Where customers run their business: landing pages, e-commerce, CRM and sales
+              pipeline, tasks,
+              marketing automation, reports, settings. Currently being rebuilt from a React + Redux app.</p>
             <ul class="bullets">
-              <li>The previous dashboard routed every piece of state through Redux, paying boilerplate for state never
-                actually shared, so on the rebuild I <b>dropped Redux entirely</b>: server state in the data layer, only
-                cross-route state in context, the rest local to its feature.</li>
-              <li>Built the typed client that fans out to <b>six separate backend products</b>, each demanding a
-                different identity header set and rejecting the others at CORS preflight, and each keyed to its own
-                store id — where the wrong one returns an empty list instead of an error.</li>
-              <li>Lists were filtering client-side over one fetched page, so results went wrong past page one. I defined
-                the <b>data-table contract every list now follows</b> — server-side pagination, debounced search,
-                sorting, filters, URL-synced state, abortable requests.</li>
-              <li>Board totals summed from the loaded page look right only in a demo, so CRM pipeline totals come from
-                <b>server-computed summaries</b>, with card moves optimistic and rolled back on a failed write.
+              <li>The old dashboard put everything through Redux, including state nothing else read. On the rebuild I
+                dropped Redux. Server state sits in the data layer, shared state in a few contexts, the rest
+                stays
+                local to its feature.
               </li>
-              <li class="deep">The legacy AngularJS builder and the new React app had to share one session, so the JWT
-                lives <b>in a
-                  cookie rather than localStorage</b> — middleware, React app and legacy builder all read one value.
-                Also built OAuth2 sign-in and TOTP two-factor.</li>
+              <li>Built the typed API client for six separate backend products. Each wants a different set of
+                identity headers and rejects the extras at CORS preflight, and each has its own store id. Send the wrong
+                id and you get an empty list, not an error, so the mistake looks like missing data.</li>
+              <li>Lists were filtering client-side over one fetched page, so anything past page one was wrong. I wrote
+                the data-table contract every list screen now follows: server-side pagination, debounced search,
+                sorting, filters, state synced to the URL, abortable requests.</li>
+              <li>CRM pipeline totals come from server-computed summaries, not from summing the page in the
+                browser. Card moves apply straight away and roll back if the write fails.
+              </li>
+              <li class="deep">The legacy AngularJS builder and the new React app share one session, so the JWT lives
+                in a cookie instead of localStorage. Middleware, React app and the old builder all read the same value.
+                Also built OAuth2 sign-in and TOTP two-factor.
+              </li>
             </ul>
             <p class="stack"><span class="k">Tech</span> Next.js 16 (App Router, route handlers, edge middleware) ·
               React 19 · TypeScript strict · Tailwind v4 · Radix UI · next-intl · @dnd-kit · Recharts · Socket.IO ·
               Paddle · Docker</p>
-            <p class="stack"><span class="k">Role</span> Core contributor on the rewrite · own shared frontend contracts
-              used platform-wide · split and coordinate frontend work · mentor and onboard new developers · author of
-              the
-              repository's engineering conventions</p>
+            <p class="stack"><span class="k">Role</span> Core contributor on the rewrite · own the shared frontend
+              contracts other screens
+              build on · split and coordinate frontend work · mentor and onboard new developers · wrote the repo's
+              engineering conventions</p>
           </div>
 
         </div>
@@ -233,31 +236,31 @@
               bank for students and teachers, with a CMS for the content team and interactive activities inside the
               books.</p>
             <ul class="bullets">
-              <li>Developed the e-textbook library and question bank, and scoped the exam and homework flows for
-                students alongside the training and lecture tools for teachers — <b>two distinct user roles in one
-                  product</b>.</li>
-              <li>Built <b>BookTools</b>, a canvas-based authoring tool for interactive textbook activities — my first
-                production drag-and-drop editor, and the foundation for the builder work I do today.</li>
+              <li>Built the e-textbook library and question bank. Scoped the exam and homework flows for students, and
+                the training and lecture tools for teachers: two different user roles in one product.</li>
+              <li>Built, updated, maintained BookTools, a canvas authoring tool for interactive textbook activities. My
+                first
+                production drag-and-drop editor, and the reason I do builder work now.</li>
               <li class="deep">Built the CMS that lets content creators configure exams, lectures, slides and games
                 without
                 engineering support.</li>
-              <li>Owned performance and technical SEO for the public library, <b>lifting the Lighthouse performance
-                  score from 50–55 to 70–75</b> — FCP 0.3–0.5s, LCP 2.0s, CLS 0.00–0.08, Speed Index 3.0s.</li>
-              <li class="deep">Worked in a micro-frontend architecture with SSO across the platform's applications, so
-                students and
+              <li>Owned performance and technical SEO for the public library. Lighthouse performance went from 50–55
+                to 70–75 (FCP 0.5–1s, LCP 2.0s, CLS 0.00–0.08, Speed Index 3.0s).</li>
+              <li class="deep">Worked in a micro-frontend setup with SSO across the platform's apps. Students and
                 teachers move between them without signing in again.</li>
             </ul>
             <p class="stack"><span class="k">Tech</span> JavaScript · React · Fabric.js · Redux · React Router ·
               Styled-components · React Hook Form</p>
-            <p class="stack"><span class="k">Role</span> Frontend in a team of four frontend and two backend engineers ·
-              feature analysis and scoping · refactoring and bug fixing across the library and CMS</p>
+            <p class="stack"><span class="k">Role</span> Frontend, in a team of four frontend and two backend · feature
+              analysis and scoping ·
+              refactoring and bug fixing across the library and CMS</p>
           </div>
 
           <div class="stream">
             <div class="stream-label">Four further products <span class="meta">04/2023 — 06/2024</span></div>
             <ul class="bullets">
-              <li><b>Sole frontend developer</b> on monkey.edu.vn, Monkey Class, AI M-Speaking and a tutoring CRM — each
-                paired with one backend engineer, so I owned the entire frontend surface end to end.</li>
+              <li>Sole frontend developer on monkey.edu.vn, Monkey Class, AI M-Speaking and a tutoring CRM, each
+                with one backend engineer. The whole frontend was mine.</li>
               <li>Virtual-classroom core (class, student and teacher management, homework, attendance), browser audio
                 recording for AI pronunciation scoring, an internal CRM with a parent-facing progress portal, and Core
                 Web Vitals plus multilingual work on the corporate site.</li>
