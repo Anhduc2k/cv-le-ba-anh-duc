@@ -130,6 +130,12 @@ body {
   transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
 }
 
+/* The language switch is an <a>, not a <button>; give it the same box. */
+a.tool {
+  text-decoration: none;
+  line-height: 1;
+}
+
 .tool:hover {
   color: var(--accent);
   border-color: var(--accent);

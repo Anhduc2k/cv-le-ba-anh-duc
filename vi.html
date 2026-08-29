@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Lê Bá Anh Đức — Frontend Developer</title>
+  <meta name="description"
+    content="Frontend developer 5 năm kinh nghiệm, chuyên visual editor và dashboard nhiều dữ liệu. Hiện maintain canvas engine kéo-thả tại LadiPage."">
+  <meta name="author" content="Le Ba Anh Duc">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Lê Bá Anh Đức — Frontend Developer">
+  <meta property="og:description"
+    content="Visual builder & platform engineering. React 19, Next.js 16, TypeScript, canvas editor, tính năng AI.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230f5257'/><text x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='18' font-weight='700' fill='%23ffffff' text-anchor='middle'>D</text></svg>">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("cv-theme");
+        if (saved === "light" || saved === "dark") {
+          document.documentElement.setAttribute("data-theme", saved);
+        }
+      } catch (e) { /* chế độ riêng tư — dùng theo cài đặt hệ điều hành */ }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div class="toolbar">
+    <a class="tool" href="index.html" hreflang="en">English</a>
+
+    <button class="tool" id="theme-toggle" type="button" aria-label="Đổi giao diện sáng / tối">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4">
+        </path>
+      </svg>
+      <span id="theme-label">Giao diện</span>
+    </button>
+
+    <button class="tool" id="view-toggle" type="button" title="Bản rút gọn là nội dung của file PDF; bản đầy đủ là bản web">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h10"></path>
+      </svg>
+      <span id="view-label">Rút gọn</span>
+    </button>
+
+    <button class="tool" id="print-btn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9V2h12v7"></path>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <path d="M6 14h12v8H6z"></path>
+      </svg>
+      Lưu PDF
+    </button>
+  </div>
+
+  <main class="sheet">
+
+    <header class="masthead">
+      <img class="portrait" src="assets/avatar.jpeg" alt="Ảnh chân dung Lê Bá Anh Đức" width="96" height="128">
+
+      <div class="identity">
+        <h1 class="name">Lê Bá Anh Đức</h1>
+        <p class="role">Frontend Developer<span class="qualifier">Visual Builders &amp; Canvas Systems</span></p>
+
+        <div class="contact">
+          <span><span class="k">SĐT</span><span class="v">0796 349 185</span></span>
+          <span><span class="k">Email</span><span class="v"><a
+                href="mailto:duclapulga@gmail.com">duclapulga@gmail.com</a></span></span>
+          <span><span class="k">Portfolio</span><span class="v"><a
+                href="https://portfolio-engger.vercel.app/">portfolio-engger.vercel.app</a></span></span>
+          <span><span class="k">Địa chỉ</span><span class="v">Nghĩa Đô, Cầu Giấy, Hà Nội</span></span>
+          <span><span class="k">Ngày sinh</span><span class="v">12/03/2000</span></span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <h2>Giới thiệu</h2>
+      </div>
+      <div class="summary">
+        <p>
+          Frontend developer, <strong>5 năm kinh nghiệm</strong>, phần lớn làm về visual editor và dashboard nhiều
+          dữ liệu. Ở <strong>LadiPage</strong> tôi là người duy nhất maintain engine canvas kéo-thả mà khách hàng dùng
+          để dựng trang, đồng thời tham gia viết lại dashboard bằng Next.js. Trước đó là gần ba năm trong mảng
+          e-learning: nền tảng sách giáo khoa điện tử, một công cụ authoring trên canvas, và bốn sản phẩm tôi là
+          frontend duy nhất.
+        </p>
+        <p>
+          Tôi đang tìm một vị trí cho phép mình tham gia sâu hơn vào các quyết định kiến trúc và bắt đầu
+          làm quen với việc hướng dẫn người khác — bước chuyển lên <strong>senior</strong>. Xa hơn, tôi muốn mở rộng dần sang
+          <strong>fullstack</strong>; hiện tại tôi đã tự viết phần server cho các tính năng của mình: route handler,
+          edge middleware, tích hợp API.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Kinh nghiệm</h2>
+      </div>
+
+      <h3 class="sub-head">Kỹ năng chuyên môn</h3>
+
+      <dl class="skills">
+        <dt>Thành thạo</dt>
+        <dd>Dùng hằng ngày trên code production, tự build và tự debug được.<br>
+          <b>TypeScript</b> (strict) <span class="dot">·</span> JavaScript ES6+ <span class="dot">·</span>
+          <b>React</b> <span class="dot">·</span> <b>Next.js</b> (App Router, route handler, middleware) <span
+            class="dot">·</span> HTML5, CSS3 <span class="dot">·</span> Tailwind CSS <span class="dot">·</span>
+          drag-and-drop &amp; canvas (dnd-kit, Fabric.js, snap &amp; align, undo/redo) <span class="dot">·</span>
+          quản lý state (Context, Redux, Zustand) <span class="dot">·</span> tích hợp REST (phân trang server-side, hủy
+          request, optimistic update) <span class="dot">·</span> Git
+        </dd>
+
+        <dt>Đã dùng thực tế</dt>
+        <dd>Đã ship tính năng thật bằng những thứ này, vào việc được ngay.<br>
+          Radix UI / shadcn <span class="dot">·</span> React Hook Form + Yup / Zod <span class="dot">·</span> Tiptap,
+          CodeMirror <span class="dot">·</span> Recharts <span class="dot">·</span> Socket.IO, Firebase <span
+            class="dot">·</span> i18n quy mô lớn (next-intl, ICU) <span class="dot">·</span> OAuth2 / SSO / JWT <span
+            class="dot">·</span> thanh toán định kỳ Paddle <span class="dot">·</span> SEO &amp; Core Web Vitals <span
+            class="dot">·</span> route handler phía Node <span class="dot">·</span> tích hợp endpoint AI <span
+            class="dot">·</span> tích hợp micro-frontend <span class="dot">·</span> AngularJS / Angular <span
+            class="dot">·</span> Bootstrap, MUI, Styled-components <span class="dot">·</span> CI/CD <span
+            class="dot">·</span> Jira, Figma</dd>
+
+        <dt>Có kiến thức</dt>
+        <dd>Từng làm việc cạnh những thứ này, tiếp nhận được nếu có người hỗ trợ.<br>
+          Nx monorepo <span class="dot">·</span> Docker <span class="dot">·</span> PHP / Blade</dd>
+
+        <dt>Ngoại ngữ</dt>
+        <dd>Tiếng Anh (trung cấp) — đọc viết tài liệu kỹ thuật, báo cáo, làm việc bất đồng bộ</dd>
+      </dl>
+
+      <h3 class="sub-head">Dự án chính</h3>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>LadiPage</h3>
+          <span class="title">Frontend Developer</span>
+          <span class="dates">07/2024 — Hiện tại</span>
+        </div>
+
+        <div class="track">
+
+          <div class="stream">
+            <div class="stream-label">LadiPage Builder</div>
+            <p class="stream-intro">Trình soạn thảo kéo-thả để khách hàng dựng landing page, popup và slide, kèm phần
+              checkout họ dùng để bán hàng. Đây là màn hình khách hàng ngồi trong đó suốt cả phiên làm việc.</p>
+            <ul class="bullets">
+              <li>Tôi được người phụ trách engine trước đó hướng dẫn khi mới vào. Bạn ấy nghỉ khoảng một năm
+                trước, và từ đó tôi chạy nó một mình. Mọi loại element mới, tính năng mới và bug production đều qua tay
+                tôi.</li>
+              <li>Element type là các plugin tự khai property schema riêng, nên tôi thêm loại mới mà không phải đụng vào
+                canvas core. Field mới bắt buộc phải optional, nếu không thì trang dựng bằng bản cũ sẽ không load
+                được.</li>
+              <li>Undo/redo chạy trên diff chứ không snapshot toàn bộ state. Mỗi field tôi thêm đều phải tham gia vào
+                diff, không thì history hỏng.</li>
+              <li>Tôi mở rộng và bảo trì phần form và checkout (field có validate, chọn địa chỉ, giỏ hàng, số lượng, mã
+                giảm giá, order bump) với chín cổng thanh toán. Mỗi cổng có kiểu redirect và callback riêng.</li>
+              <li class="deep">Nối phần AI vào canvas. Output của model trở thành element thật trên element tree, nên
+                section do AI sinh ra vẫn sửa được sau đó.</li>
+            </ul>
+            <p class="stack"><span class="k">Công nghệ</span> JavaScript ES6 · AngularJS · jQuery · React 19 ·
+              TypeScript · @dnd-kit · Canvas &amp; DOM geometry · Tiptap · CodeMirror</p>
+            <p class="stack"><span class="k">Vai trò</span> Người duy nhất maintain: làm tính năng, fix bug, hỗ trợ
+              production · phát triển bên trong extension model của engine</p>
+          </div>
+
+          <div class="stream">
+            <div class="stream-label">LadiPage Dashboard <span class="meta">đang tập trung</span></div>
+            <p class="stream-intro">Nơi khách hàng vận hành kinh doanh: landing page, thương mại điện tử, CRM và
+              pipeline bán hàng, task, marketing automation, báo cáo, cài đặt. Đang được viết lại từ ứng dụng React +
+              Redux.</p>
+            <ul class="bullets">
+              <li>Dashboard cũ đẩy mọi state qua Redux, kể cả state không nơi nào khác đọc. Bản viết lại bỏ
+                Redux: server state nằm ở tầng data, chỉ những gì thật sự dùng chung nhiều route mới đưa lên context,
+                còn lại giữ local theo từng feature.</li>
+              <li>Xây API client có type cho sáu backend riêng biệt. Mỗi backend cần một bộ header định danh khác nhau
+                và từ chối header thừa ngay ở CORS preflight, mỗi cái lại có store id riêng. Gửi nhầm id thì nhận về
+                list rỗng chứ không phải lỗi, nên sai sót trông như thiếu dữ liệu.</li>
+              <li>Các màn danh sách đang lọc client-side trên một trang dữ liệu đã fetch, nên từ trang hai trở đi là
+                sai. Tôi viết ra data-table contract mà giờ mọi màn danh sách đều theo: phân trang server-side, search
+                có debounce, sort, filter, state đồng bộ lên URL, request hủy được.</li>
+              <li>Tổng của CRM pipeline lấy từ summary do server tính, không cộng dồn trang đang hiển thị trên browser.
+                Kéo thẻ thì áp dụng ngay và tự rollback nếu ghi thất bại.</li>
+              <li class="deep">Builder AngularJS cũ và app React mới dùng chung một session, nên JWT để trong cookie
+                thay vì localStorage. Middleware, app React và builder cũ đều đọc cùng một giá trị. Tôi cũng làm đăng
+                nhập OAuth2 và 2FA bằng TOTP.</li>
+            </ul>
+            <p class="stack"><span class="k">Công nghệ</span> Next.js 16 (App Router, route handler, edge middleware) ·
+              React 19 · TypeScript strict · Tailwind v4 · Radix UI · next-intl · @dnd-kit · Recharts · Socket.IO ·
+              Paddle · Docker</p>
+            <p class="stack"><span class="k">Vai trò</span> Thành viên chính của bản viết lại · xây các frontend contract dùng chung mà những màn
+              khác dựa vào · viết bộ quy ước kỹ thuật cho repo</p>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Early Start</h3>
+          <span class="title">Frontend Developer</span>
+          <span class="dates">09/2021 — 06/2024</span>
+        </div>
+
+        <div class="track">
+
+          <div class="stream">
+            <div class="stream-label">hoc10.vn — nền tảng sách giáo khoa điện tử <span class="meta">09/2021 —
+                04/2023</span></div>
+            <p class="stream-intro">Nền tảng sách điện tử cho trường học Việt Nam: thư viện sách giáo khoa và ngân hàng
+              câu hỏi cho học sinh và giáo viên, kèm CMS cho đội nội dung và các hoạt động tương tác trong sách.</p>
+            <ul class="bullets">
+              <li>Xây thư viện sách điện tử và ngân hàng câu hỏi. Phân tích và triển khai luồng thi, bài tập cho học
+                sinh, cùng công cụ tập huấn và bài giảng cho giáo viên: hai nhóm người dùng khác nhau trong cùng một sản
+                phẩm.</li>
+              <li>Xây, cập nhật và bảo trì BookTools, công cụ authoring trên canvas cho các hoạt động tương tác trong
+                sách. Đây là trình soạn thảo kéo-thả production đầu tiên của tôi, và là lý do tôi làm mảng builder đến
+                giờ.</li>
+              <li class="deep">Xây CMS để đội nội dung tự cấu hình đề thi, bài giảng, slide và game mà không cần lập
+                trình viên.</li>
+              <li>Phụ trách performance và technical SEO cho phần thư viện công khai. Điểm Lighthouse performance tăng
+                từ 50–55 lên 70–75 (FCP 0.5–1s, LCP 2.0s, CLS 0.00–0.08, Speed Index 3.0s).</li>
+              <li class="deep">Làm trong mô hình micro-frontend có SSO giữa các app của nền tảng. Học sinh và giáo viên
+                chuyển qua lại mà không phải đăng nhập lại.</li>
+            </ul>
+            <p class="stack"><span class="k">Công nghệ</span> JavaScript · React · Fabric.js · Redux · React Router ·
+              Styled-components · React Hook Form</p>
+            <p class="stack"><span class="k">Vai trò</span> Frontend, trong team bốn frontend và hai backend · phân tích
+              và bóc tách yêu cầu · refactor và fix bug ở thư viện và CMS</p>
+          </div>
+
+          <div class="stream">
+            <div class="stream-label">Bốn sản phẩm khác <span class="meta">04/2023 — 06/2024</span></div>
+            <ul class="bullets">
+              <li>Frontend duy nhất của monkey.edu.vn, Monkey Class, AI M-Speaking và một CRM gia sư, mỗi dự án đi cùng
+                một backend. Toàn bộ phần frontend là của tôi.</li>
+              <li>Lõi lớp học ảo (quản lý lớp, học sinh, giáo viên, giao bài, điểm danh), thu âm trên trình duyệt cho
+                chấm phát âm bằng AI, CRM nội bộ kèm cổng theo dõi tiến độ cho phụ huynh, và phần Core Web Vitals cùng
+                đa ngôn ngữ cho website công ty.</li>
+            </ul>
+            <p class="stack"><span class="k">Công nghệ</span> Next.js 13 · Angular · Zustand · React Hook Form + Yup ·
+              Web Audio / MediaRecorder · Bootstrap · PHP (Blade) · Google Analytics, Clevertap · CI/CD</p>
+          </div>
+
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Học vấn &amp; Giải thưởng</h2>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <span class="primary">Đại học Điện lực</span>
+          <span class="secondary">Kỹ sư Công nghệ Thông tin — chuyên ngành Công nghệ Phần mềm · GPA 3.3 / 4.0</span>
+          <span class="dates">2018 — 2023</span>
+        </div>
+        <div class="row">
+          <span class="primary">Nhân viên xuất sắc của năm — Khối Kỹ thuật</span>
+          <span class="secondary">Early Start</span>
+          <span class="dates">2023</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      var label = document.getElementById("theme-label");
+      var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function isDark() {
+        var explicit = root.getAttribute("data-theme");
+        return explicit ? explicit === "dark" : darkQuery.matches;
+      }
+
+      function render() {
+        label.textContent = isDark() ? "Sáng" : "Tối";
+      }
+
+      toggle.addEventListener("click", function () {
+        var next = isDark() ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("cv-theme", next); } catch (e) { /* chế độ riêng tư */ }
+        render();
+      });
+
+      darkQuery.addEventListener("change", function () {
+        if (!root.getAttribute("data-theme")) render();
+      });
+
+      var viewBtn = document.getElementById("view-toggle");
+      var viewLabel = document.getElementById("view-label");
+
+      function currentView() {
+        return root.getAttribute("data-view") === "compact" ? "compact" : "full";
+      }
+
+      function renderView() {
+        viewLabel.textContent = currentView() === "compact" ? "Đầy đủ" : "Rút gọn";
+      }
+
+      viewBtn.addEventListener("click", function () {
+        var next = currentView() === "compact" ? "full" : "compact";
+        root.setAttribute("data-view", next);
+        renderView();
+      });
+
+      renderView();
+
+      document.getElementById("print-btn").addEventListener("click", function () {
+        window.print();
+      });
+
+      render();
+    })();
+  </script>
+
+</body>
+
+</html>
