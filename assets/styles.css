@@ -719,8 +719,11 @@ code {
     --paper-sunk: #f5f8f8;
     --ink: #11171a;
     --ink-soft: #39454a;
-    --muted: #6d7a7e;
-    --rule: #dde4e4;
+    /* Paper needs more contrast than a screen: #6d7a7e measured only
+       4.43:1 on white, under even WCAG AA, and the TECH / ROLE lines
+       printed faint because of it. #4e5a5e is 7.12:1. */
+    --muted: #4e5a5e;
+    --rule: #ccd6d6;
     --rule-strong: #b6c2c2;
     --accent: #0f5257;
     --accent-tint: #eaf3f2;
@@ -774,6 +777,11 @@ code {
      whole stream to the next page and leave the tail of this one empty. */
   :root:not([data-view="full"]) .stream {
     break-inside: auto;
+  }
+
+  /* Small grey text needs a touch more weight in print than on screen. */
+  .stack {
+    font-weight: 450;
   }
 
   :root:not([data-view="full"]) .job {

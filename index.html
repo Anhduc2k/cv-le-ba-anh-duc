@@ -56,15 +56,15 @@
       <span id="view-label">Compact</span>
     </button>
 
-    <button class="tool" id="print-btn" type="button">
+    <a class="tool" id="download-pdf" href="CV-Le-Ba-Anh-Duc-EN.pdf" download title="Download the 2-page PDF (same as printing the compact view)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
         stroke-linejoin="round" aria-hidden="true">
-        <path d="M6 9V2h12v7"></path>
-        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-        <path d="M6 14h12v8H6z"></path>
+        <path d="M12 3v12"></path>
+        <path d="M7 11l5 5 5-5"></path>
+        <path d="M4 20h16"></path>
       </svg>
-      Save as PDF
-    </button>
+      Download PDF
+    </a>
   </div>
 
   <main class="sheet">
@@ -75,7 +75,7 @@
 
       <div class="identity">
         <h1 class="name">Lê Bá Anh Đức</h1>
-        <p class="role">Frontend Developer<span class="qualifier">Visual Builders &amp; Canvas Systems</span></p>
+        <p class="role">Frontend Developer</p>
 
         <div class="contact">
           <span><span class="k">Phone</span><span class="v">0796 349 185</span></span>
@@ -103,7 +103,8 @@
         </p>
         <p>
           I'm looking for a role where I take on more of the architecture decisions and start growing into the
-          mentoring side — the step into <strong>senior</strong>. Longer term I want to move toward <strong>fullstack</strong>;
+          mentoring side — the step into <strong>senior</strong>. Longer term I want to move toward
+          <strong>fullstack</strong>;
           I already write the server side of my own features: route handlers, edge middleware, API integration.
         </p>
       </div>
@@ -213,7 +214,8 @@
             <p class="stack"><span class="k">Tech</span> Next.js 16 (App Router, route handlers, edge middleware) ·
               React 19 · TypeScript strict · Tailwind v4 · Radix UI · next-intl · @dnd-kit · Recharts · Socket.IO ·
               Paddle · Docker</p>
-            <p class="stack"><span class="k">Role</span> Core contributor on the rewrite · built the shared frontend contracts other screens
+            <p class="stack"><span class="k">Role</span> Core contributor on the rewrite · built the shared frontend
+              contracts other screens
               build on · wrote the repo's engineering conventions</p>
           </div>
 
@@ -348,9 +350,6 @@
 
       renderView();
 
-      document.getElementById("print-btn").addEventListener("click", function () {
-        window.print();
-      });
 
       render();
     })();
