@@ -257,6 +257,149 @@ a.tool {
 }
 
 /* ============================================================
+   REFERENCE-FORMAT BLOCKS
+   Date in a left rail, everything else in the right column —
+   the layout of the ITviec-style CV this was modelled on.
+   ============================================================ */
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.intro p {
+  margin: 0;
+}
+
+.intro strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 0 18px;
+  align-items: start;
+  break-inside: auto;
+}
+
+.when {
+  font-size: 8.8pt;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+
+.what {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.entry-title {
+  margin: 0;
+  font-size: 10.8pt;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.entry-sub {
+  margin: -4px 0 0;
+  font-size: 9.8pt;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.desc {
+  margin: 0;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+/* "Domain", "Project", "Role", and the grouped technology rows all share
+   one label-value shape so the eye learns it once. */
+.field {
+  margin: 0;
+  font-size: 9.3pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.field .k {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 8.1pt;
+  color: var(--accent);
+  padding-right: 6px;
+}
+
+.field.tech {
+  color: var(--muted);
+}
+
+/* Heading above each cluster of responsibility bullets. */
+.group {
+  margin: 4px 0 0;
+  font-size: 9.6pt;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.when-inline {
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 8.8pt;
+  padding-left: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Skill tags. Years are the point, so they get their own weight. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  padding: 2px 8px;
+}
+
+.tags li span {
+  font-weight: 500;
+  font-size: 8.3pt;
+  color: var(--muted);
+}
+
+.tags.secondary {
+  margin-top: 6px;
+}
+
+.tags.secondary li {
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: none;
+}
+
+/* ============================================================
    SECTIONS
    ============================================================ */
 section {
@@ -666,6 +809,11 @@ code {
 
   .contact {
     grid-template-columns: 1fr;
+  }
+
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .summary {
