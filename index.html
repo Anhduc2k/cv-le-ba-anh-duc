@@ -84,7 +84,7 @@
           <span><span class="k">Portfolio</span><span class="v"><a
                 href="https://portfolio-engger.vercel.app/">portfolio-engger.vercel.app</a></span></span>
           <span><span class="k">Address</span><span class="v">Nghĩa Đô, Cầu Giấy, Hà Nội</span></span>
-          <span><span class="k">Born</span><span class="v">12/03/2000</span></span>
+          <span><span class="k">DOB</span><span class="v">12/03/2000</span></span>
         </div>
       </div>
     </header>
@@ -92,14 +92,15 @@
     <!-- Free-form intro, as in the reference format: no section heading,
          sits directly under the contact block. -->
     <div class="intro">
-      <p>My name is Đức. I graduated from Electric Power University, majoring in Software Technology.</p>
-      <p>I have <strong>5 years</strong> as a Frontend Developer, most of it on visual editors and data-heavy
-        dashboards. At LadiPage I maintain the drag-and-drop canvas engine customers build their pages in, and I work
-        on the Next.js rebuild of the dashboard around it. Before that I spent nearly three years in e-learning: an
-        e-textbook platform, a canvas authoring tool, and four products where I was the main frontend developer.</p>
-      <p>I am strong at <strong>TypeScript, JavaScript and React</strong>, and experienced with Next.js, canvas and
-        drag-and-drop systems, HTML5, CSS3 and REST integration. I am also used to owning a codebase by myself and
-        keeping it stable in production.</p>
+      <p>Software Engineering graduate from Electric Power University with around <strong>5 years</strong> of frontend
+        development experience, specializing in visual editors and data-heavy dashboards.</p>
+      <p>At LadiPage, I maintain the core drag-and-drop canvas engine and contribute to the ground-up Next.js dashboard
+        rebuild. Prior to that, I spent nearly three years in EdTech building a national digital textbook platform, a
+        canvas-based authoring tool, and serving as the main frontend developer across four separate products.</p>
+      <p><strong>Core Technical Stack:</strong>TypeScript, JavaScript, React, Next.js, canvas & drag-and-drop systems,
+        HTML5, CSS3, and REST API integration. I excel at owning codebases independently and keeping them stable in
+        production
+        environments.</p>
       <p>My goal is to become a <strong>Full-Stack Developer</strong>. I want to own more of the architecture and
         technical decisions, and to support the people I work with. I already write the server side of my own
         features, and I want to go further on that side.
@@ -138,14 +139,13 @@
           </p>
           <p class="field"><span class="k">Team Size</span> 4 frontend, 3 backend, 1 DevOps, 2 QA, 1 design, 1 PM
             (total 12)</p>
-
+          <p class="group">Key Responsibilities & Achievements:</p>
           <p class="group">Builder engine (main ownership)</p>
           <ul class="bullets">
-            <li>I was onboarded onto the engine by the developer who owned it. They left about a year ago, and
-              I have been the main developer on it since. New element types, features and production bugs come to
-              me.</li>
+            <li>Took over the builder canvas engine from its original creator; currently serve as the main developer
+              handling new element types, features, and production bugs.</li>
             <li>Element types are plugins with their own property schema, so I can add one without touching the
-              canvas core. New fields have to stay optional; otherwise pages built on older versions stop
+              canvas core. New fields have to stay optional, otherwise pages built on older versions stop
               loading.</li>
             <li>Undo/redo works on diffs, not full-state snapshots. Every field I add has to take part in the diff or
               history breaks.</li>
@@ -157,16 +157,20 @@
               visitors arriving from ChatGPT ads. Every field takes several IDs at once, and conversions also go
               server-side through <b>Conversion API</b> and TikTok postback, since the browser pixel alone drops
               events.</li>
+            <li><b>AI landing-page generation</b> — the user writes a description or pastes their own outline and
+              can attach up to ten reference images. Those are analysed server-side and the analysis is merged back
+              into the outline before generation. The create call enqueues a <b>streaming job</b>, so sections land in
+              the builder one at a time instead of after the whole page finishes, and the credit balance is checked
+              over a live socket before anything is spent.</li>
             <li class="deep">Wired the AI features into the canvas. Model output becomes real elements on the element
               tree, so a generated section is still editable afterwards.</li>
           </ul>
 
           <p class="group">Dashboard rebuild</p>
           <ul class="bullets">
-            <li>The old dashboard put everything through Redux, including state nothing else read. The rebuild drops
-              it: server state stays in the data layer, only state that really does span routes goes into context, the
-              rest
-              stays local to its feature.</li>
+            <li>Rebuilt the dashboard without Redux, transitioning to a streamlined architecture: server state
+              resides in the data layer, global context is strictly limited to cross-route state, and everything else
+              remains local to its feature.</li>
             <li>Built the typed API client for six separate backend products. Each wants a different set of identity
               headers and rejects the extras at CORS preflight, and each has its own store id. Send the wrong id and
               you get an empty list, not an error, so the mistake looks like missing data.</li>

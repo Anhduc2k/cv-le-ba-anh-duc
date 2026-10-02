@@ -146,6 +146,10 @@
               conversion tracking của Google Ads, GTM và Google Analytics, cùng <b>OpenAI Pixel</b> đo lượt truy cập
               đến từ quảng cáo trên ChatGPT. Mỗi trường nhận nhiều ID cùng lúc, và chuyển đổi còn được bắn phía server
               qua <b>Conversion API</b> và TikTok postback, vì pixel trên trình duyệt một mình sẽ sót sự kiện.</li>
+            <li><b>Sinh landing page bằng AI</b> — người dùng mô tả trang hoặc dán outline có sẵn, kèm tối đa mười
+              ảnh tham khảo. Ảnh được phân tích phía server rồi ghép kết quả ngược lại vào outline trước khi sinh.
+              Lệnh tạo đẩy vào một <b>job stream</b> nên các section hiện dần trong builder thay vì chờ xong cả trang,
+              và số dư credit được kiểm qua socket realtime trước khi trừ.</li>
             <li class="deep">Nối phần AI vào canvas. Output của model trở thành element thật trên element tree, nên
               section do AI sinh ra vẫn sửa được sau đó.</li>
           </ul>
