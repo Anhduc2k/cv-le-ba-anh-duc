@@ -135,8 +135,8 @@
             <b>dashboard</b> they run their business from. I maintain the builder engine on my own and contribute to
             the ground-up rebuild of the dashboard.
           </p>
-          <p class="field"><span class="k">Team Size</span> 3 frontend, 3 backend, 1 DevOps, 1 QA, 1 design, 1 PM
-            (total 10)</p>
+          <p class="field"><span class="k">Team Size</span> 3 frontend, 3 backend, 1 DevOps, 2 QA, 1 design, 1 PM
+            (total 11)</p>
 
           <p class="group">Builder engine (sole ownership)</p>
           <ul class="bullets">
@@ -150,6 +150,11 @@
             <li>I extend and support the form and checkout stack (validated fields, address pickers, cart, quantity,
               coupons, order bumps) across nine payment providers. Each one has its own redirect and callback
               quirks.</li>
+            <li>Built the tracking and ads side of the product: <b>Facebook, TikTok, Zalo and Google pixels</b>,
+              Google Ads conversion tracking, GTM and Google Analytics, and the <b>OpenAI Pixel</b> that measures
+              visitors arriving from ChatGPT ads. Every field takes several IDs at once, and conversions also go
+              server-side through <b>Conversion API</b> and TikTok postback, since the browser pixel alone drops
+              events.</li>
             <li class="deep">Wired the AI features into the canvas. Model output becomes real elements on the element
               tree, so a generated section is still editable afterwards.</li>
           </ul>
@@ -157,7 +162,8 @@
           <p class="group">Dashboard rebuild</p>
           <ul class="bullets">
             <li>The old dashboard put everything through Redux, including state nothing else read. The rebuild drops
-              it: server state stays in the data layer, only state that really does span routes goes into context, the rest
+              it: server state stays in the data layer, only state that really does span routes goes into context, the
+              rest
               stays local to its feature.</li>
             <li>Built the typed API client for six separate backend products. Each wants a different set of identity
               headers and rejects the extras at CORS preflight, and each has its own store id. Send the wrong id and
@@ -170,6 +176,17 @@
             <li class="deep">The legacy AngularJS builder and the new React app share one session, so the JWT lives in
               a cookie instead of localStorage. Middleware, React app and the old builder all read the same value.
               Also built OAuth2 sign-in and TOTP two-factor.</li>
+          </ul>
+
+          <p class="group">Cross-functional collaboration</p>
+          <ul class="bullets">
+            <li>I work day to day with the product owner, QA, backend engineers and designers. Most of the
+              back-and-forth is with backend: we agree the payload shape before either side starts, then I chase down
+              the mismatches when the two do not line up.</li>
+            <li>Work with backend teams to design and integrate APIs, troubleshoot integration issues, and
+              ensure seamless end-to-end functionality.</li>
+            <li>I guide <b>one fresher</b> on the builder — explaining how the engine fits together, reviewing what
+              they write, and taking the parts that would break production.</li>
           </ul>
 
           <p class="group">Engineering practice</p>
@@ -188,9 +205,11 @@
             middleware) · React 19 · TypeScript (strict) · JavaScript ES6 · AngularJS · jQuery</p>
           <p class="field tech"><span class="k">UI</span> Tailwind CSS v4 · Radix UI · @dnd-kit · Tiptap · CodeMirror
             · Recharts · Canvas &amp; DOM geometry</p>
-          <p class="field tech"><span class="k">Platform</span> OAuth2 / SSO / JWT · Paddle billing · next-intl ·
-            Socket.IO · Firebase</p>
-          <p class="field tech"><span class="k">DevOps &amp; Tools</span> Docker · CI/CD · Git · Jira · Figma</p>
+          <p class="field tech"><span class="k">Platform</span> OAuth2 / SSO / JWT · Paddle billing · Facebook, TikTok,
+            Zalo
+            &amp; Google pixels · <b>OpenAI Pixel (ChatGPT ads)</b> · Conversion API · GTM · Google Analytics ·
+            next-intl · Socket.IO · Firebase</p>
+          <p class="field tech"><span class="k">Tools</span>CI/CD · Git · Jira · Figma</p>
         </div>
       </div>
 
@@ -232,7 +251,8 @@
             M-Speaking · Tutoring CRM</p>
           <p class="field"><span class="k">Team Size</span> hoc10.vn: 4 frontend, 2 backend · other products: 1
             frontend (me) + 1 backend each</p>
-          <p class="field"><span class="k">Role</span> Junior to Middle Frontend Developer. Feature analysis and scoping,
+          <p class="field"><span class="k">Role</span> Fresher to Middle Frontend Developer. Feature analysis and
+            scoping,
             refactoring and bug fixing</p>
           <p class="field"><span class="k">Process</span> Agile Scrum, tracked in Jira</p>
 
@@ -293,6 +313,7 @@
             <li>OAuth2 / SSO / JWT</li>
             <li>Paddle billing</li>
             <li>SEO &amp; Core Web Vitals</li>
+            <li>Pixel &amp; Conversion API (Facebook, TikTok, Google, Zalo, OpenAI)</li>
             <li>REST integration</li>
             <li>Node-side route handlers</li>
             <li>AI endpoint integration</li>

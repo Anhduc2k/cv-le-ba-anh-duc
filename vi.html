@@ -142,6 +142,10 @@
               diff, không thì history hỏng.</li>
             <li>Tôi mở rộng và bảo trì phần form và checkout (field có validate, chọn địa chỉ, giỏ hàng, số lượng, mã
               giảm giá, order bump) với chín cổng thanh toán. Mỗi cổng có kiểu redirect và callback riêng.</li>
+            <li>Làm phần tracking và quảng cáo của sản phẩm: <b>pixel Facebook, TikTok, Zalo và Google</b>,
+              conversion tracking của Google Ads, GTM và Google Analytics, cùng <b>OpenAI Pixel</b> đo lượt truy cập
+              đến từ quảng cáo trên ChatGPT. Mỗi trường nhận nhiều ID cùng lúc, và chuyển đổi còn được bắn phía server
+              qua <b>Conversion API</b> và TikTok postback, vì pixel trên trình duyệt một mình sẽ sót sự kiện.</li>
             <li class="deep">Nối phần AI vào canvas. Output của model trở thành element thật trên element tree, nên
               section do AI sinh ra vẫn sửa được sau đó.</li>
           </ul>
@@ -164,6 +168,15 @@
               nhập OAuth2 và 2FA bằng TOTP.</li>
           </ul>
 
+          <p class="group">Phối hợp liên bộ phận</p>
+          <ul class="bullets">
+            <li>Tôi làm việc hằng ngày với product owner, QA, backend và designer. Trao đổi nhiều nhất là với
+              backend: hai bên chốt hình dạng payload trước khi ai bắt tay vào làm, rồi tôi truy các chỗ lệch khi hai
+              đầu không khớp nhau.</li>
+            <li>Tôi hướng dẫn <b>một bạn fresher</b> ở mảng builder — giải thích cách engine ghép lại với nhau, xem
+              lại code bạn ấy viết, và nhận về những phần có thể làm vỡ production.</li>
+          </ul>
+
           <p class="group">Quy chuẩn kỹ thuật</p>
           <ul class="bullets">
             <li>Xây các frontend contract dùng chung mà những màn hình khác dựa vào, và viết bộ quy ước kỹ thuật cho
@@ -180,8 +193,9 @@
             middleware) · React 19 · TypeScript (strict) · JavaScript ES6 · AngularJS · jQuery</p>
           <p class="field tech"><span class="k">UI</span> Tailwind CSS v4 · Radix UI · @dnd-kit · Tiptap · CodeMirror
             · Recharts · Canvas &amp; DOM geometry</p>
-          <p class="field tech"><span class="k">Platform</span> OAuth2 / SSO / JWT · Paddle billing · next-intl ·
-            Socket.IO · Firebase</p>
+          <p class="field tech"><span class="k">Platform</span> OAuth2 / SSO / JWT · Paddle billing · Facebook, TikTok, Zalo
+            &amp; Google pixels · <b>OpenAI Pixel (ChatGPT ads)</b> · Conversion API · GTM · Google Analytics ·
+            next-intl · Socket.IO · Firebase</p>
           <p class="field tech"><span class="k">DevOps &amp; Tools</span> Docker · CI/CD · Git · Jira · Figma</p>
         </div>
       </div>
@@ -288,6 +302,7 @@
             <li>OAuth2 / SSO / JWT</li>
             <li>Paddle billing</li>
             <li>SEO &amp; Core Web Vitals</li>
+            <li>Pixel &amp; Conversion API (Facebook, TikTok, Google, Zalo, OpenAI)</li>
             <li>Tích hợp REST</li>
             <li>Route handler phía Node</li>
             <li>Tích hợp endpoint AI</li>
